@@ -1,8 +1,8 @@
 # FutBet
 FutBet-Project
 Mitglieder:
-Raphael Stangl
-Valdet Zeciri
-Vanja Visekruna
+Raphael Stangl,
+Valdet Zeciri,
+Vanja Visekruna,
 Robert Nguyen
 
