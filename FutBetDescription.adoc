@@ -1,0 +1,32 @@
+# FutBet
+
+## Was ist FutBet?
+* Wettapp
+* kein Einsatz
+* Fußball-Liveticker
+* Spaß im Vordergrund
+** Gegen Freude
+** Gegen jeden
+* Verschiedene Wettmöglichkeiten
+** Top-5-Ligen & Top Wettbewerbe
+** Topscorer des Turniers
+** Gewinner des Turniers
+
+## Benötigte Technologien
+* Datenbank(MySQL)
+* eventuell Java
+* HTML, CSS, JavaScript
+* Server
+* PHP
+
+## Projektablauf
+* Statische Website
+* Funktionierende Datenbank
+* Account-System
+* Implementierung der WebApp
+
+## Projektmitglieder
+* Valdet Zeciri
+* Vanja Visekruna
+* Raphael Stangl
+* Robert Nguyen
