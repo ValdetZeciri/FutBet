@@ -1,0 +1,37 @@
+[plantuml]
+....
+@startuml
+
+class User{
+string Username
+string Password
+List<Group> groups
+}
+
+class Group{
+List<User> players
+Competition comp
+}
+class Game{
+Team homeTeam
+Team guestTeam
+int goalsHomeTeam
+int goalsGuestTeam
+}
+class Team{
+string Name
+}
+class Competition{
+List<Team> teams
+List<Game> games
+
+}
+
+User "many" *-- "many" Group: contains
+Game "many" *-- "1" Competition: contains
+Group "many" *-- "1" Competition: exists
+
+Team "2" *-- "1" Game: contains
+Competition "1" *-- "many" Team: contains
+@enduml
+....
