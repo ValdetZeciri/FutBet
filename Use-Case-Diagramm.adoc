@@ -1,0 +1,13 @@
+[plantuml]
+....
+@startuml
+
+User --> (tritt in ein Gruppe ein)
+User --> (als Spieler registrieren)
+User --> (platziert Wette)
+(platziert Wette) --> Auswertungssystem
+Auswertungssystem --> (bekommt Punkte)
+(bekommt Punkte) --> User
+
+@enduml
+....
