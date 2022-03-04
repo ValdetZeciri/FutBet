@@ -187,80 +187,13 @@
             </div>
          </div>
       </section>
-      <section id="contant" class="contant">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-9 col-sm-12 col-xs-12">
-                  <div class="news-post-holder">
-                     <div class="col-lg-6 col-sm-6 col-xs-12">
-                        <div class="news-post-widget">
-                           <img class="img-responsive" src="images/img-01_002.jpg" alt="">
-                           <div class="news-post-detail">
-                              <span class="date">20 march 2016</span>
-                              <h2><a href="blog-detail.html">Free play to ground in anywhere</a></h2>
-                              <p>Just hours after that his grandma had died, Angel Di Maria imagined how she might react if he didn't play</p>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6 col-sm-6 col-xs-12">
-                        <div class="news-post-widget">
-                           <img class="img-responsive" src="images/img-01_002.jpg" alt="">
-                           <div class="news-post-detail">
-                              <span class="date">20 march 2016</span>
-                              <h2><a href="blog-detail.html">Free play to ground in anywhere</a></h2>
-                              <p>Just hours after that his grandma had died, Angel Di Maria imagined how she might react if he didn't play</p>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6 col-sm-6 col-xs-12">
-                        <div class="news-post-widget">
-                           <img class="img-responsive" src="images/img-01_002.jpg" alt="">
-                           <div class="news-post-detail">
-                              <span class="date">20 march 2016</span>
-                              <h2><a href="blog-detail.html">Free play to ground in anywhere</a></h2>
-                              <p>Just hours after that his grandma had died, Angel Di Maria imagined how she might react if he didn't play</p>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6 col-sm-6 col-xs-12">
-                        <div class="news-post-widget">
-                           <img class="img-responsive" src="images/img-01_002.jpg" alt="">
-                           <div class="news-post-detail">
-                              <span class="date">20 march 2016</span>
-                              <h2><a href="blog-detail.html">Free play to ground in anywhere</a></h2>
-                              <p>Just hours after that his grandma had died, Angel Di Maria imagined how she might react if he didn't play</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-3 col-sm-6 col-xs-12">
-                  <div class="content-widget top-story" style="background: url(images/top-story-bg.jpg);">
-                     <div class="top-stroy-header">
-                        <h2>Top Soccer Headlines Story <a href="#" class="fa fa-fa fa-angle-right"></a></h2>
-                        <span class="date">July 05, 2017</span>
-                        <h2>Other Headlines</h2>
-                     </div>
-                     <ul class="other-stroies">
-                        <li><a href="#">Wenger Vardy won't start</a></li>
-                        <li><a href="#">Evans: Vardy just</a></li>
-                        <li><a href="#">Pires and Murray </a></li>
-                        <li><a href="#">Okazaki backing</a></li>
-                        <li><a href="#">Wolfsburg's Rodriguez</a></li>
-                        <li><a href="#">Jamie Vardy compared</a></li>
-                        <li><a href="#">Arsenal target Mkhitaryan</a></li>
-                        <li><a href="#">Messi wins libel case.</a></li>
-                     </ul>
-                  </div>
-                  <aside id="sidebar" class="right-bar">
-                     <div class="banner">
-                        <img class="img-responsive" src="images/adds-3.jpg" alt="#">
-                     </div>
-                  </aside>
-               </div>
-            </div>
-         </div>
-      </section>
+      
+      <div id="blog" class ="blog-post">
+      </div>
+
+
+
+
       <footer id="footer" class="footer">
          <div class="container">
             <div class="row">
@@ -323,9 +256,131 @@
          </div>
       </footer>
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+      <script>
+         var axios = require("axios").default;
+
+         var options = {
+         method: 'GET',
+         url: 'https://api-football-v1.p.rapidapi.com/v3/timezone',
+         headers: {
+         'x-rapidapi-host': 'api-football-v1.p.rapidapi.com',
+         'x-rapidapi-key': 'd5dfd7e6camsh7e06d834bb1ed60p117d6fjsnc8b661190cac'
+         }
+      }; 
+
+      axios.request(options).then(function (response) {
+	   console.log(response.data);   
+      }).catch(function (error) {
+	   console.error(error);
+      });
+
+      </script>
+
       <!-- ALL JS FILES -->
       <script src="js/all.js"></script>
       <!-- ALL PLUGINS -->
       <script src="js/custom.js"></script>
+
    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db496fcfa5f78a6',m:'buz5WDELGwPeKrgCZhvcPbKkgf9KFb07pYje0tpPyGM-1644488268-0-AeMw5ZGRCtwi4K0+/C1otD4RxEQJQhNul8rF0aatOrAvh7Rox2C2V1ZkxcsoMNs9bOQQqEdfFDifDHjTKV0zlJqb6hve52MABWRqEVPyRdnFViEfbDp6iTJZVq3Ok1S//nBokKBynggdcqnPh3WEAjqpoN8LdZQoKKZiDhTJ4XYmDTqALQuxzj1nXYGd4U/h7g==',s:[0x6b2a5d9893,0x58bd31c9ff],}})();</script></body>
-</html>
+   <script>
+      fetch("https://livescore6.p.rapidapi.com/news/v2/list", {
+         "method": "GET",
+         "headers": {
+            "x-rapidapi-host": "livescore6.p.rapidapi.com",
+            "x-rapidapi-key": "5cf6dbd389mshfa55a38e39f2280p162536jsnffff8cd0bc51"
+         }
+      })
+      .then(res => res.json())
+      .then(res => {
+         console.log(res.topStories[0].mainMedia.thumbnail.url)
+      
+         let data1=""
+      
+         for(var i = 0; i < res.topStories.length;i++){
+      
+            let text = res.topStories[i].createdAt;
+
+            data1+=`<div id="blog" class ="blog-post">
+         <div class ="blog-post_img">
+            <img src="${res.topStories[i].mainMedia.thumbnail.url}" alt="">
+         </div>
+         <div class ="blog-post_info">
+            <div class ="blog-post_date">
+               <span>${text.slice(0,16)}</span>
+               <span> </span>
+            </div>
+            <h1 class ="blog-post_title">${res.topStories[i].title}</h1>
+            <p class ="blog-post_text">${res.topStories[i].subTitle}</p>
+            <a href ="" class="blog-post_cta">Read more</a>
+         </div>
+      </div>`
+         }
+      
+         document.getElementById("blog").innerHTML=data1;
+      })
+         
+         
+      </script>
+
+
+   </html>
+
+
+   <style>
+      *,
+      *::before,
+      *::after{
+         margin: 0;
+         padding: 0;
+      }
+
+      .blog-post{
+         width: 100%;
+         max-width: 68rem;
+         display:inline-block;
+         margin: 10px;
+         border: 0.1px solid black;
+         padding: 40px;
+
+      }
+      .blog-post_img{
+         min-width: 45rem;
+         max-width: 45rem;
+         height: 30rem;
+         position: 20px; 
+      }
+
+
+      .blog-post_date span{
+         display: inline;
+         color: rgba(0,0,0,.5);
+         font-size: 1.6rem;
+         font-weight: 600;
+         margin: .5rem 0
+      }
+
+      .blog-post_title{
+         font-size: 1.5rem;
+         margin: 1.5rem 0 2 rem;
+         text-transform: uppercase;
+         color: black;
+      }
+      .blog-post_text{
+         margin-bottom: 3rem;
+         font-size: 1.4rem;
+         color: rgba(0,0,0,.7);
+      }
+      .blog-post_cta{
+         display:inline-block;
+         padding: 1.5rem 3rem;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         font-size: 1.2rem;
+         color: white;
+         background-image: linear-gradient(to right, #cc0000 0%, #ab0000 100%);
+      }
+
+   </style>
+   
+   
