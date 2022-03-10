@@ -1,0 +1,31 @@
+= Projektfortschrittsbericht
+
+== Projektname, Datum
+
+Projektname: FutBet
+Datum: 10.03.2022
+
+== Projektstatus
+
+Projekt in Ampelform '*Gelb*' +
+Das Projekt ist in Arbeit. Die statische Website steht planmäßig und der Code für die Datenbank steht. Nur das Implementieren der Datenbank in die Website verläuft nicht nach Plan. Aufgrund dessen ist das Projekt mit '*Gelb*' zu bewerten.
+
+== Abgeschlossene Arbeiten
+
+* statische Website
+** Designsuche
+** Website einrichten
+* Datenbank
+** Datenbank einrichten
+
+== Arbeitspakete, die aktuell in Arbeit sind
+
+* Datenbank mit Server verbinden
+* Informieren über die nächsten Schritte
+
+== Ausblick, nächste Schritte
+
+Website auf Server laufen zu lassen. Logik programmieren.
+
+== Vergleich mit Zeitplan, evtl. aktualsiertes GANTT-Diagramm mit Fortschrittsbalken, etc.
+Seperat Abgegeben
