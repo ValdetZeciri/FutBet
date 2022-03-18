@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <!-- Site Metas -->
+   <title>Game Info</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
+   <link rel="shortcut icon" type="image/x-icon" />
+   <link rel="apple-touch-icon" >
+   <!-- Bootstrap CSS -->
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <link rel="stylesheet" th:href="@{bootstrap.min.css}">
+   <!-- Site CSS -->
+   <link rel="stylesheet" th:href="@{style.css}">
+   <!-- Colors CSS -->
+   <link rel="stylesheet" th:href="@{colors.css}">
+   <!-- ALL VERSION CSS -->	
+   <link rel="stylesheet" th:href="@{versions.css}">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" th:href="@{responsive.css}">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" th:href="@{custom.css}">
+   <!-- font family -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <!-- end font family -->
+   <link rel="stylesheet" th:href="@{css/3dslider.css}" />
+   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+   <script th:src="@{js/3dslider.js}"></script>
+   <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+   <body class="game_info" data-spy="scroll" data-target=".header">
+      <!-- LOADER -->
+      <div id="preloader">
+         <img class="preloader" th:src="@{images/loading-img.gif}" alt="">
+      </div>
+      <!-- END LOADER -->
+      <section id="top">
+         <header>
+            <div class="container">
+               <div class="header-top">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="full">
+                           <div class="logo">
+                              <a th:href="@{index.html}"><img th:src="@{images/logo.png}" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="right_top_section">
+                           <!-- social icon -->
+                           <ul class="social-icons pull-left">
+                              <li><a class="facebook" th:href="@{#}"><i class="fa fa-facebook"></i></a></li>
+                              <li><a class="twitter" th:href="@{#}"><i class="fa fa-twitter"></i></a></li>
+                              <li><a class="youtube" th:href="@{#}"><i class="fa fa-youtube-play"></i></a></li>
+                           </ul>
+                           <!-- end social icon -->
+                           <!-- button section -->
+                           <ul class="login">
+                              <li class="login-modal">
+                                 <a th:href="@{#}" class="login"><i class="fa fa-user"></i>Login</a>
+                              </li>
+                              <li>
+                                 <div class="cart-option">
+                                    <a th:href="@{#}"><i class="fa fa-shopping-cart"></i>Register</a>
+                                 </div>
+                              </li>
+                           </ul>
+                           <!-- end button section -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="header-bottom">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="full">
+                           <div class="main-menu-section">
+                              <div class="menu">
+                                 <nav class="navbar navbar-inverse">
+                                    <div class="navbar-header">
+                                       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                                       <span class="sr-only">Toggle navigation</span>
+                                       <span class="icon-bar"></span>
+                                       <span class="icon-bar"></span>
+                                       <span class="icon-bar"></span>
+                                       </button>
+                                       <a class="navbar-brand" th:href="@{#}">Menu</a>
+                                    </div>
+                                    <div class="collapse navbar-collapse js-navbar-collapse">
+                                       <ul class="nav navbar-nav">
+                                          <li class="active"><a th:href="@{index.html}">Home</a></li>
+                                          <li><a th:href="@{about.html}">About</a></li>
+                                          <li><a th:href="@{team.html}">Team</a></li>
+                                          <li><a th:href="@{news.html}">News</a></li>
+                                          <li class="dropdown mega-dropdown">
+                                             <a th:href="@{match}" class="dropdown-toggle" data-toggle="dropdown">Match<span class="caret"></span></a>
+                                             <ul class="dropdown-menu mega-dropdown-menu">
+                                                <li class="col-sm-8">
+                                                   <ul>
+                                                      <li class="dropdown-header">Men Collection</li>
+                                                      <div id="menCollection" class="carousel slide" data-ride="carousel">
+                                                         <div class="carousel-inner">
+                                                            <div class="item active">
+                                                               <div class="banner-for-match"><a th:href="@{#}"><img class="img-responsive" th:src="@{images/match-banner1.jpg}" alt="#" /></a></div>
+                                                            </div>
+                                                            <!-- End Item -->
+                                                            <div class="item">
+                                                               <div class="banner-for-match"><a th:href="@{#}"><img class="img-responsive" th:src="@{images/match-banner1.jpg}" alt="#" /></a></div>
+                                                            </div>
+                                                            <!-- End Item -->
+                                                            <div class="item">
+                                                               <div class="banner-for-match"><a th:href="@{#}"><img class="img-responsive" th:src="@{images/match-banner1.jpg}" alt="#" /></a></div>
+                                                            </div>
+                                                            <!-- End Item -->                                
+                                                         </div>
+                                                         <!-- End Carousel Inner -->
+                                                         <!-- Controls -->
+                                                         <a class="left carousel-control" th:href="@{#menCollection}" role="button" data-slide="prev">
+                                                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                         <span class="sr-only">Previous</span>
+                                                         </a>
+                                                         <a class="right carousel-control" th:href="@{#menCollection}" role="button" data-slide="next">
+                                                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                         <span class="sr-only">Next</span>
+                                                         </a>
+                                                      </div>
+                                                      <!-- /.carousel -->
+                                                   </ul>
+                                                </li>
+                                                <li class="col-sm-4">
+                                                   <ul class="menu-inner">
+                                                      <li class="dropdown-header">Next Matchs</li>
+                                                      <li><a th:href="@{#}">Contrary vs classical</a></li>
+                                                      <li><a th:href="@{#}">Discovered vs undoubtable</a></li>
+                                                      <li><a th:href="@{#}">Contrary vs classical</a></li>
+                                                      <li><a th:href="@{#}">Discovered vs undoubtable</a></li>
+                                                      <li><a th:href="@{#}">Contrary vs classical</a></li>
+                                                      <li><a th:href="@{#}">Discovered vs undoubtable</a></li>
+                                                      <li><a th:href="@{#}">Contrary vs classical</a></li>
+                                                      <li><a th:href="@{#}">Discovered vs undoubtable</a></li>
+                                                   </ul>
+                                                </li>
+                                             </ul>
+                                          </li>
+                                          <li><a th:href="@{blog.html}">Blog</a></li>
+                                          <li><a th:href="@{contact.html}">contact</a></li>
+                                       </ul>
+                                    </div>
+                                    <!-- /.nav-collapse -->
+                                 </nav>
+                                 <div class="search-bar">
+                                    <div id="imaginary_container">
+                                       <div class="input-group stylish-input-group">
+                                          <input type="text" class="form-control"  placeholder="Search" >
+                                          <span class="input-group-addon">
+                                          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>  
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <div class="inner-page-banner">
+            <div class="container">
+            </div>
+         </div>
+         <div class="inner-information-text">
+            <div class="container">
+               <h3>News</h3>
+               <ul class="breadcrumb">
+                  <li><a th:href="@{index.html}">Home</a></li>
+                  <li class="active">News</li>
+               </ul>
+            </div>
+         </div>
+      </section>
+
+      <br>
+      <br>
+
+      <h1 style="color:#ab0000"> Latest News Football World</h1>
+
+      <div id ="news1" class="row">
+     </div>
+
+
+      <footer id="footer" class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <div class="footer-logo">
+                           <a th:href="@{#}"><img th:src="@{images/footer-logo.png}" alt="#" /></a>
+                        </div>
+                        <p></p>
+                        <ul class="social-icons style-4 pull-left">
+                           <li><a class="facebook" th:href="@{#}"><i class="fa fa-facebook"></i></a></li>
+                           <li><a class="twitter" th:href="@{#}"><i class="fa fa-twitter"></i></a></li>
+                           <li><a class="youtube" th:href="@{#}"><i class="fa fa-youtube-play"></i></a></li>
+                           <li><a class="pinterest" th:href="@{#}"><i class="fa fa-pinterest-p"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <h3>Menu</h3>
+                        <ul class="footer-menu">
+                           <li><a th:href="@{about.html}">About Us</a></li>
+                           <li><a th:href="@{team.html}">Our Team</a></li>
+                           <li><a th:href="@{news.html}">Latest News</a></li>
+                           <li><a th:href="@{matche.html}">Recent Matchs</a></li>
+                           <li><a th:href="@{contact.html}">Contact Us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="full">
+                     <div class="footer-widget">
+                        <h3>Contact us</h3>
+                        <ul class="address-list">
+                           <li><i class="fa fa-map-marker"></i>HTBLA Leonding</li>
+                           <li><i class="fa fa-phone"></i>...</li>
+                           <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> FutBet7@gmail.com</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="full">
+                     <div class="contact-footer">
+                        <iframe src="https://www.google.at/maps/dir//HTBLA+Leonding,+Limesstraße+12-14,+4060+Leonding/@48.2677947,14.2401104,13.48z/data=!4m8!4m7!1m0!1m5!1m1!1s0x477396fb96f68367:0xf2b265395a736637!2m2!1d14.2517849!2d48.2684024" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="footer-bottom">
+
+         </div>
+      </footer>
+      <a th:href="@{#home}" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+      <script>
+         var axios = require("axios").default;
+
+         var options = {
+         method: 'GET',
+         url: 'https://api-football-v1.p.rapidapi.com/v3/timezone',
+         headers: {
+         'x-rapidapi-host': 'api-football-v1.p.rapidapi.com',
+         'x-rapidapi-key': 'd5dfd7e6camsh7e06d834bb1ed60p117d6fjsnc8b661190cac'
+         }
+      }; 
+
+      axios.request(options).then(function (response) {
+	   console.log(response.data);   
+      }).catch(function (error) {
+	   console.error(error);
+      });
+
+      </script>
+
+      <!-- ALL JS FILES -->
+      <script th:src="@{js/all.js}"></script>
+      <!-- ALL PLUGINS -->
+      <script th:src="@{js/custom.js}"></script>
+
+   <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db496fcfa5f78a6',m:'buz5WDELGwPeKrgCZhvcPbKkgf9KFb07pYje0tpPyGM-1644488268-0-AeMw5ZGRCtwi4K0+/C1otD4RxEQJQhNul8rF0aatOrAvh7Rox2C2V1ZkxcsoMNs9bOQQqEdfFDifDHjTKV0zlJqb6hve52MABWRqEVPyRdnFViEfbDp6iTJZVq3Ok1S//nBokKBynggdcqnPh3WEAjqpoN8LdZQoKKZiDhTJ4XYmDTqALQuxzj1nXYGd4U/h7g==',s:[0x6b2a5d9893,0x58bd31c9ff],}})();</script></body>
+   <script>
+      fetch("https://livescore6.p.rapidapi.com/news/v2/list", {
+         "method": "GET",
+         "headers": {
+            "x-rapidapi-host": "livescore6.p.rapidapi.com",
+            "x-rapidapi-key": "5cf6dbd389mshfa55a38e39f2280p162536jsnffff8cd0bc51"
+         }
+      })
+      .then(res => res.json())
+      .then(res => {
+         console.log(res.topStories[0].mainMedia.thumbnail.url)
+      
+         let data1=""
+      
+         for(var i = 0; i < res.topStories.length;i++){
+      
+            let text = res.topStories[i].createdAt;
+
+            if(res.topStories[i].categoryLabel == "Football"){
+
+                     data1+=`<div id = "news1"class="row">
+                              <div class="container">
+                              <div class="col-md-3 column">
+                                 <div class="card">
+                                 <img class="img-responsive" src="${res.topStories[i].mainMedia.thumbnail.url}" style="width:100%">
+                                    <h4 style="color:black">${res.topStories[i].title}</h4>
+                                    <div class="center"><button onclick="window.location.href = '${res.topStories[i].url}'';"class="button">Read More</button></div>
+                              </div>
+                           </div>`
+                        }
+   
+         }
+      
+         document.getElementById("news1").innerHTML=data1;
+      })
+         
+         
+      </script>
+
+
+   </html>
+
+
+   <style>
+      *,
+      *::before,
+      *::after{
+         margin: 0;
+         padding: 0;
+      }
+
+      .blog-post{
+         width: 100%;
+         max-width: 68rem;
+         display:inline-block;
+         margin: 10px;
+         border: 0.1px solid black;
+         padding: 40px;
+
+      }
+      .blog-post_img{
+         min-width: 45rem;
+         max-width: 45rem;
+         height: 30rem;
+         position: 20px; 
+      }
+
+
+      .blog-post_date span{
+         display: inline;
+         color: rgba(0,0,0,.5);
+         font-size: 1.6rem;
+         font-weight: 600;
+         margin: .5rem 0
+      }
+
+      .blog-post_title{
+         font-size: 1.5rem;
+         margin: 1.5rem 0 2 rem;
+         text-transform: uppercase;
+         color: black;
+      }
+      .blog-post_text{
+         margin-bottom: 3rem;
+         font-size: 1.4rem;
+         color: rgba(0,0,0,.7);
+      }
+      .blog-post_cta{
+         display:inline-block;
+         padding: 1.5rem 3rem;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         font-size: 1.2rem;
+         color: white;
+         background-image: linear-gradient(to right, #cc0000 0%, #ab0000 100%);
+      }
+
+   </style>
