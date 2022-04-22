@@ -30,4 +30,14 @@ public class Controller {
         return "news";
     }
 
+    @GetMapping("/team.html")
+    public String getTeam(){
+        return "team";
+    }
+
+    @GetMapping("/login.php")
+    public String getLink(){
+        return "login.php";
+    }
+
 }
