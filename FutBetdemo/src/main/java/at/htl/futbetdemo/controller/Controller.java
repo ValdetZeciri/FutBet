@@ -1,13 +1,17 @@
 package at.htl.futbetdemo.controller;
 
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Date;
 
 @org.springframework.stereotype.Controller
 public class Controller {
 
     @GetMapping("/")
-    public String getIndex(){
+    public String getIndex(Model model){
+        model.addAttribute("serverTime", "Hallo");
         return "index";
     }
 
@@ -25,4 +29,5 @@ public class Controller {
     public String getNews(){
         return "news";
     }
+
 }
