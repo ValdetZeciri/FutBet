@@ -1,0 +1,59 @@
+CREATE TABLE USER_(
+        id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,
+        INCREMENT BY 1),
+        name varchar(50),
+        password varchar(50),
+        PRIMARY KEY (id)
+    );
+
+CREATE TABLE COMPETITION(
+        competitionID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,
+        INCREMENT BY 1),
+        name varchar(50)
+);
+
+CREATE TABLE USER_GROUP(
+    userId int,
+    groupId int,
+    Primary Key (userId,groupId),
+    FOREIGN KEY (userId) REFERENCES USER_(id),
+    FOREIGN KEY (groupId) REFERENCES GROUP(id)
+);
+
+CREATE TABLE GROUP(
+    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,
+    INCREMENT BY 1),
+    name varchar(50),
+    competitionId int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (competitionId) REFERENCES COMPETITION(competitionID)
+);
+
+CREATE TABLE GAME
+(
+    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,
+    INCREMENT BY 1),
+    team1Id int,
+    team2Id int,
+    toreHeim int,
+    toreAuswaerts int,
+    competitionId int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (team1Id, team2Id) REFERENCES TEAM(teamID),
+    FOREIGN KEY (competitionId) REFERENCES COMPETITION(competitionID)
+);
+
+CREATE TABLE TEAM(
+    teamID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1,
+    INCREMENT BY 1),
+    name varchar(50),
+    PRIMARY KEY (teamID)
+);
+
+CREATE TABLE COMPETITION_TEAM(
+    compId int,
+    teamId int,
+    PRIMARY KEY (compId,teamId),
+    FOREIGN KEY (compId) REFERENCES COMPETITION(competitionID),
+    FOREIGN KEY (teamId) REFERENCES TEAM(teamID)
+);
