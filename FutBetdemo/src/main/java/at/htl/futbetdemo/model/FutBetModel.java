@@ -67,7 +67,7 @@ public class FutBetModel {
 
 
 
-    public void getDataFromApi() throws IOException, ParseException, JSONException, UnirestException {
+    public void testMethod() throws IOException, ParseException, JSONException, UnirestException {
 
 
         Unirest.setTimeouts(0, 0);

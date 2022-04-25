@@ -20,7 +20,6 @@ public class Controller {
 
     public Controller() throws SQLException, IOException, JSONException, ParseException, UnirestException {
         futModel = new FutBetModel();
-        futModel.getDataFromApi();
     }
 
     @GetMapping("/")
