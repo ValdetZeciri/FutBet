@@ -1,23 +1,21 @@
 package at.htl.futbetdemo.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Database {
     private static Database instance = null;
     private Connection connection;
-    public static synchronized Database getInstance() {
+    public static synchronized Database getInstance() throws SQLException {
         if (instance == null) {
             instance = new Database();
         }
         return instance;
     }
-    private Database() {
+    private Database() throws SQLException {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con= DriverManager.getConnection(
-                    "jdbc:oracle:thin:@delphi.htl-leonding.ac.at:1521:delphidb","system","oracle");
+            connection= DriverManager.getConnection(
+                    "jdbc:oracle:thin:@delphi.htl-leonding.ac.at:1521:delphidb","if190105","oracle");
 
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -25,5 +23,15 @@ public class Database {
                     "\n");
             System.exit(1);
         }
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO Persons( PersonId , Lastname) VALUES (1, 'STANGL')"
+        );
+
+        preparedStatement.execute();
+        preparedStatement.close();
+
+
+
     }
 }
