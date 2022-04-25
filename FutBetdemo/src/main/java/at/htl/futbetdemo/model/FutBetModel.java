@@ -29,9 +29,9 @@ public class FutBetModel {
          database = Database.getInstance();
     }
 
-    public HttpResponse<String> makeApiConnection() throws UnirestException {
+    public HttpResponse<String> makeApiConnection(String type, String filter, String value) throws UnirestException {
         Unirest.setTimeouts(0, 0);
-        HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/teams?country=England")
+        HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type +"?" + filter +"="+ value)
                 .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
                 .header("x-rapidapi-host", "v3.football.api-sports.io")
                 .asString();
@@ -39,12 +39,42 @@ public class FutBetModel {
         return response;
     }
 
+    public void getGroupList(User user){
+
+    }
+
+    public void getLeagueTable(Leagues league) throws UnirestException {
+        HttpResponse<String> response;
+
+        if (league.equals(Leagues.PremierLeague)){
+            response = makeApiConnection("leagues", "id", "39");
+        }
+        else if (league.equals(Leagues.Ligue1)){
+            response = makeApiConnection("leagues", "id", "61");
+        }
+        else if (league.equals(Leagues.Bundesliga1)){
+            response = makeApiConnection("leagues", "id", "78");
+        }
+        else if (league.equals(Leagues.LaLiga)){
+            response = makeApiConnection("leagues", "id", "140");
+        }
+        else if (league.equals(Leagues.SerieA)){
+            response = makeApiConnection("leagues", "id", "135");
+        }
+
+
+    }
+
+
 
     public void getDataFromApi() throws IOException, ParseException, JSONException, UnirestException {
 
-        HttpResponse<String> response = makeApiConnection();
 
-
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/leagues/teams")
+                .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
+                .header("x-rapidapi-host", "v3.football.api-sports.io")
+                .asString();
 
 
             JSONObject data_obj = new JSONObject(response.getBody());
