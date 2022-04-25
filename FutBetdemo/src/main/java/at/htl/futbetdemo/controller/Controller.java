@@ -28,7 +28,6 @@ public class Controller {
 
         model.addAttribute("serverTime", "Hallo");
 
-
         return "index";
     }
 

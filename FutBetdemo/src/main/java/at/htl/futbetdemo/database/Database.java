@@ -20,7 +20,7 @@ public class Database {
 
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Verbindung zur Datenbank nicht moeglich " + ex +
-                    "\n");
+                    "");
             System.exit(1);
         }
 
@@ -30,8 +30,5 @@ public class Database {
 
         preparedStatement.execute();
         preparedStatement.close();
-
-
-
     }
 }
