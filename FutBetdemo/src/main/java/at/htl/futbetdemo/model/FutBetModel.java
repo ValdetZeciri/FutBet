@@ -29,9 +29,19 @@ public class FutBetModel {
          database = Database.getInstance();
     }
 
-    public HttpResponse<String> makeApiConnection(String type, String filter, String value) throws UnirestException {
+    public HttpResponse<String> makeApiConnectionWithParamenter(String type, String filter, String value) throws UnirestException {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type +"?" + filter +"="+ value)
+                .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
+                .header("x-rapidapi-host", "v3.football.api-sports.io")
+                .asString();
+
+        return response;
+    }
+
+    public HttpResponse<String> makeApiConnectionWithType(String type) throws UnirestException {
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type)
                 .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
                 .header("x-rapidapi-host", "v3.football.api-sports.io")
                 .asString();
@@ -47,19 +57,19 @@ public class FutBetModel {
         HttpResponse<String> response;
 
         if (league.equals(Leagues.PremierLeague)){
-            response = makeApiConnection("leagues", "id", "39");
+            response = makeApiConnectionWithParamenter("leagues", "id", "39");
         }
         else if (league.equals(Leagues.Ligue1)){
-            response = makeApiConnection("leagues", "id", "61");
+            response = makeApiConnectionWithParamenter("leagues", "id", "61");
         }
         else if (league.equals(Leagues.Bundesliga1)){
-            response = makeApiConnection("leagues", "id", "78");
+            response = makeApiConnectionWithParamenter("leagues", "id", "78");
         }
         else if (league.equals(Leagues.LaLiga)){
-            response = makeApiConnection("leagues", "id", "140");
+            response = makeApiConnectionWithParamenter("leagues", "id", "140");
         }
         else if (league.equals(Leagues.SerieA)){
-            response = makeApiConnection("leagues", "id", "135");
+            response = makeApiConnectionWithParamenter("leagues", "id", "135");
         }
 
 
@@ -68,8 +78,7 @@ public class FutBetModel {
 
 
     public void testMethod() throws IOException, ParseException, JSONException, UnirestException {
-
-
+        
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/leagues/teams")
                 .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
