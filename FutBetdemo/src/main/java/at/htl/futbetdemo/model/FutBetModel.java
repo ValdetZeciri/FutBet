@@ -26,7 +26,7 @@ public class FutBetModel {
 
 
     public FutBetModel() throws SQLException {
-         database = Database.getInstance();
+         database = Database.getInstance(this);
     }
 
     public HttpResponse<String> makeApiConnection(String type, String filter, String value) throws UnirestException {
@@ -44,23 +44,7 @@ public class FutBetModel {
     }
 
     public void getLeagueTable(Leagues league) throws UnirestException {
-        HttpResponse<String> response;
-
-        if (league.equals(Leagues.PremierLeague)){
-            response = makeApiConnection("leagues", "id", "39");
-        }
-        else if (league.equals(Leagues.Ligue1)){
-            response = makeApiConnection("leagues", "id", "61");
-        }
-        else if (league.equals(Leagues.Bundesliga1)){
-            response = makeApiConnection("leagues", "id", "78");
-        }
-        else if (league.equals(Leagues.LaLiga)){
-            response = makeApiConnection("leagues", "id", "140");
-        }
-        else if (league.equals(Leagues.SerieA)){
-            response = makeApiConnection("leagues", "id", "135");
-        }
+        HttpResponse<String> response = getLeague(league);
 
 
     }
@@ -84,6 +68,50 @@ public class FutBetModel {
 
             System.out.println(team.getString("name"));
 
+    }
+
+    public HttpResponse<String> getLeague(Leagues league) throws UnirestException {
+        HttpResponse<String> response = null;
+
+        if (league.equals(Leagues.PremierLeague)){
+            response = makeApiConnection("leagues", "id", "39");
+        }
+        else if (league.equals(Leagues.Ligue1)){
+            response = makeApiConnection("leagues", "id", "61");
+        }
+        else if (league.equals(Leagues.Bundesliga1)){
+            response = makeApiConnection("leagues", "id", "78");
+        }
+        else if (league.equals(Leagues.LaLiga)){
+            response = makeApiConnection("leagues", "id", "140");
+        }
+        else if (league.equals(Leagues.SerieA)){
+            response = makeApiConnection("leagues", "id", "135");
+        }
+
+        return response;
+    }
+
+    public int getLeagueId(Leagues league) throws UnirestException {
+        int id = 0;
+
+        if (league.equals(Leagues.PremierLeague)){
+            id = 39;
+        }
+        else if (league.equals(Leagues.Ligue1)){
+            id =61;
+        }
+        else if (league.equals(Leagues.Bundesliga1)){
+            id =78;
+        }
+        else if (league.equals(Leagues.LaLiga)){
+            id =140;
+        }
+        else if (league.equals(Leagues.SerieA)){
+            id =135;
+        }
+
+        return id;
     }
 
 

@@ -1,17 +1,28 @@
 package at.htl.futbetdemo.database;
 
+import at.htl.futbetdemo.model.FutBetModel;
+import at.htl.futbetdemo.model.Leagues;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import java.sql.*;
 
 public class Database {
     private static Database instance = null;
     private Connection connection;
-    public static synchronized Database getInstance() throws SQLException {
+    FutBetModel model;
+
+    public static synchronized Database getInstance(FutBetModel model) throws SQLException {
         if (instance == null) {
-            instance = new Database();
+            instance = new Database(model);
         }
         return instance;
     }
-    private Database() throws SQLException {
+
+    // INSERT INTO USER_ (name, password) VALUES ("Raphael", Lollol12)
+
+    private Database(FutBetModel model) throws SQLException {
+        this.model = model;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             connection= DriverManager.getConnection(
@@ -23,12 +34,27 @@ public class Database {
                     "");
             System.exit(1);
         }
+    }
+
+    public void addUser(String userName, String password) throws SQLException {
+
+         PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO USER_ (name, password) VALUES (?,?)"
+         );
+
+         preparedStatement.setString(1, userName);
+         preparedStatement.setString(2, password);
+
+         preparedStatement.execute();
+         preparedStatement.close();
+    }
+
+    public void createUserGroup(int userId, String groupName, Leagues league) throws SQLException, UnirestException {
+        int id = model.getLeagueId(league);
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO Persons( PersonId , Lastname) VALUES (1, 'STANGL')"
+                ""
         );
 
-        preparedStatement.execute();
-        preparedStatement.close();
     }
 }
