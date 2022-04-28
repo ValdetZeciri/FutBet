@@ -5,8 +5,10 @@ import at.htl.futbetdemo.model.FutBetModel;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -51,9 +53,16 @@ public class Controller {
         return "team";
     }
 
-    @GetMapping("/login.php")
+    @GetMapping("/login-page")
     public String getLink(){
-        return "login.php";
+        return "login-page";
+    }
+
+    //@RequestMapping(value = "/login-page/login", method = RequestMethod.POST)
+    @PostMapping("/login-page")
+    public String makePostEcho(@RequestBody String data) {
+
+        return "login-page";
     }
 
 }
