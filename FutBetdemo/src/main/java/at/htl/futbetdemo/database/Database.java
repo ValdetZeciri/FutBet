@@ -2,6 +2,7 @@ package at.htl.futbetdemo.database;
 
 import at.htl.futbetdemo.model.FutBetModel;
 import at.htl.futbetdemo.model.Leagues;
+import at.htl.futbetdemo.model.User;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -36,25 +37,52 @@ public class Database {
         }
     }
 
-    public void addUser(String userName, String password) throws SQLException {
+    public int addUser(User user) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO USER_(name, password) VALUES(?, ?)"
+        );
+        preparedStatement.setString(1, user.getUserName());
+        preparedStatement.setString(2, user.getPassword());
+        preparedStatement.execute();
+        preparedStatement.close();
 
-         PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO USER_ (name, password) VALUES (?,?)"
-         );
+        PreparedStatement preparedStatement1 = connection.prepareStatement(
+                "SELECT id FROM USER_ WHERE name = ?"
+        );
+        preparedStatement1.setString(1, user.getUserName());
+        ResultSet resultSet = preparedStatement.executeQuery();
 
-         preparedStatement.setString(1, userName);
-         preparedStatement.setString(2, password);
+        while(resultSet.next()){
+            return resultSet.getInt(1);
+        }
 
-         preparedStatement.execute();
-         preparedStatement.close();
+        resultSet.close();
+        preparedStatement1.execute();
+        preparedStatement1.close();
+        return 0;
     }
 
-    public void createUserGroup(int userId, String groupName, Leagues league) throws SQLException, UnirestException {
+    public void createGroup(String groupName, Leagues league) throws SQLException, UnirestException {
         int id = model.getLeagueId(league);
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                ""
+                "INSERT INTO GROUP_(name, competition) VALUES(?, ?)"
         );
 
+        preparedStatement.setString(1,groupName);
+        preparedStatement.setInt(2, id);
+        preparedStatement.execute();
+        preparedStatement.close();
+    }
+
+    public void addUserToGroup(int userId, int groupId) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO USER_GROUP(userId, groupId) VALUES (?,?)"
+        );
+
+        preparedStatement.setInt(1, userId);
+        preparedStatement.setInt(2, groupId);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 }
