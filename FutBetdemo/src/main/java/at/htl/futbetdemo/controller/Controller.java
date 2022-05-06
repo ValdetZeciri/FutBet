@@ -2,6 +2,7 @@ package at.htl.futbetdemo.controller;
 
 
 import at.htl.futbetdemo.model.FutBetModel;
+import at.htl.futbetdemo.model.User;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
@@ -25,10 +28,12 @@ public class Controller {
     }
 
     @GetMapping("/")
-    public String getIndex(Model model) throws SQLException, IOException {
+    public String getIndex(HttpServletRequest request, Model model) throws SQLException, IOException {
 
+        HttpSession session = request.getSession();
 
-        model.addAttribute("serverTime", "Hallo");
+        System.out.println(session.getId());
+
 
         return "index";
     }
@@ -54,15 +59,48 @@ public class Controller {
     }
 
     @GetMapping("/login-page")
-    public String getLink(){
-        return "login-page";
+    public String getLogin(Model model){
+        model.addAttribute("user", new User());
+        model.addAttribute("message", "");
+        return "loginPage";
     }
 
-    //@RequestMapping(value = "/login-page/login", method = RequestMethod.POST)
     @PostMapping("/login-page")
-    public String makePostEcho(@RequestBody String data) {
+    public String postLogin(HttpServletRequest request, @ModelAttribute User user, Model model) {
+        String message = futModel.checkForCorrectLogin(user);
 
-        return "login-page";
+        HttpSession session = request.getSession();
+
+        System.out.println(session.getId());
+
+        if (message == "correct"){
+            return "index";
+        }
+
+        model.addAttribute("message", message);
+
+        return "loginPage";
     }
+
+    @GetMapping("/register-page")
+    public String getRegister(Model model){
+        model.addAttribute("user", new User());
+        model.addAttribute("message", "");
+
+        return "register-page";
+    }
+
+    @PostMapping("/register-page")
+    public String postRegister(@ModelAttribute User user, Model model) {
+
+        System.out.println(user.getUserName() + " " + user.getId());
+
+        String message = futModel.checkForRightPassword(user.getId());
+
+        model.addAttribute("message", message);
+
+        return "register-page";
+    }
+
 
 }

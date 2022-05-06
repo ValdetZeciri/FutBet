@@ -13,14 +13,18 @@
 <main id="main-holder">
     <h1 id="login-header">Register</h1>
 
-    <div id="login-error-msg-holder">
+    <div id="login-error-msg-holder" ><p th:text="${message}"></p>
     </div>
 
-    <form id="login-form">
-        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+    <form th:action="@{/register-page}" th:object="${user}" method="post">
+        <input type="text" th:field="*{userName}" name="username" class="login-form-field" placeholder="Username">
+        <br>
+        <input type="password" th:field="*{id}" name="password" class="login-form-field" placeholder="Password">
+        <br>
         <input type="submit" value="Login" id="login-form-submit">
     </form>
+
+    <a th:href="@{login-page}" >Log In</a>
 
 </main>
 </body>
