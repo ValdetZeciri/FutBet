@@ -37,10 +37,11 @@ public class Database {
 
     public int addUser(User user) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO USER_(name, password) VALUES(?, ?)"
+                "INSERT INTO USER_(name, password, emailAdress) VALUES(?, ?, ?)"
         );
         preparedStatement.setString(1, user.getUserName());
         preparedStatement.setString(2, user.getPassword());
+        preparedStatement.setString(3, user.getEmailAdress());
         preparedStatement.execute();
         preparedStatement.close();
 
@@ -139,5 +140,20 @@ public class Database {
         preparedStatement.setInt(2, team.getId());
         preparedStatement.execute();
         preparedStatement.close();
+    }
+
+    public boolean checkUserLogin(User user) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT (emailAdress, password) FROM USER_"
+        );
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()){
+            if(user.getEmailAdress().equals(resultSet.getString(1))&&user.getPassword().equals(resultSet.getString(2))){
+                return true;
+            }
+        }
+
+        return false;
     }
 }

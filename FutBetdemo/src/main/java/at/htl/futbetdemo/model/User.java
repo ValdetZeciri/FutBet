@@ -6,12 +6,14 @@ import java.util.List;
 public class User {
     private int id;
     private String userName;
+    private String emailAdress;
     private List<Group> groupList = new ArrayList<>();
     private String password;
 
-    public User(String userName, String password){
+    public User(String userName, String password, String emailAdress){
         this.userName = userName;
         this.password = password;
+        this.emailAdress = emailAdress;
     }
 
     public int getId() {
@@ -37,5 +39,9 @@ public class User {
 
     public void setId(int id){
         this.id = id;
+    }
+
+    public String getEmailAdress() {
+        return emailAdress;
     }
 }
