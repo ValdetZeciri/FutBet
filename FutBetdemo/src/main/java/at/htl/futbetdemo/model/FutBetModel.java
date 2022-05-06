@@ -156,4 +156,12 @@ public class FutBetModel {
 
         return message;
     }
+
+
+    public String checkForCorrectLogin(User user) throws SQLException {
+        if (database.checkUserLogin(user)==true){
+            return "correct";
+        }
+        return "incorrect";
+    }
 }
