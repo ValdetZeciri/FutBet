@@ -66,7 +66,7 @@ public class Controller {
     }
 
     @PostMapping("/login-page")
-    public String postLogin(HttpServletRequest request, @ModelAttribute User user, Model model) {
+    public String postLogin(HttpServletRequest request, @ModelAttribute User user, Model model) throws SQLException {
         String message = futModel.checkForCorrectLogin(user);
 
         HttpSession session = request.getSession();
@@ -91,11 +91,11 @@ public class Controller {
     }
 
     @PostMapping("/register-page")
-    public String postRegister(@ModelAttribute User user, Model model) {
+    public String postRegister(@ModelAttribute User user, Model model) throws SQLException {
 
         System.out.println(user.getUserName() + " " + user.getId());
 
-        String message = futModel.checkForRightPassword(user.getId());
+        String message = futModel.checkForCorrectLogin(user);
 
         model.addAttribute("message", message);
 

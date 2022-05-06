@@ -44,4 +44,8 @@ public class User {
     public String getEmailAdress() {
         return emailAdress;
     }
+
+    public User(){
+
+    }
 }
