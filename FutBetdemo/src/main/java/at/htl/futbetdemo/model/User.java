@@ -9,6 +9,10 @@ public class User {
     private List<Group> groupList = new ArrayList<>();
     private String password;
 
+    public User(){
+
+    }
+
     public User(String userName, String password){
         this.userName = userName;
         this.password = password;

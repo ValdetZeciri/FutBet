@@ -67,17 +67,17 @@ public class Controller {
 
     @PostMapping("/login-page")
     public String postLogin(HttpServletRequest request, @ModelAttribute User user, Model model) {
-        String message = futModel.checkForCorrectLogin(user);
+        //String message = futModel.checkForCorrectLogin(user);
 
         HttpSession session = request.getSession();
 
         System.out.println(session.getId());
 
-        if (message == "correct"){
-            return "index";
-        }
-
-        model.addAttribute("message", message);
+//        if (message == "correct"){
+//            return "index";
+//        }
+//
+//        model.addAttribute("message", message);
 
         return "loginPage";
     }
@@ -95,9 +95,9 @@ public class Controller {
 
         System.out.println(user.getUserName() + " " + user.getId());
 
-        String message = futModel.checkForRightPassword(user.getId());
-
-        model.addAttribute("message", message);
+//        String message = futModel.checkForRightPassword(user.getId());
+//
+//        model.addAttribute("message", message);
 
         return "register-page";
     }

@@ -156,9 +156,4 @@ public class FutBetModel {
 
         return message;
     }
-
-
-    public String checkForCorrectLogin(User user) {
-        return database.checkForCorrectLogin(user);
-    }
 }
