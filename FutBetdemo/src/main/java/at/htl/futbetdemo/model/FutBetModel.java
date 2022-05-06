@@ -139,6 +139,26 @@ public class FutBetModel {
         return id;
     }
 
+    public String checkForRightPassword(String password){
+        String message = "correct";
+
+        if (password == ""){
+            message = "Kein Passwort eingegeben";
+        }
+
+        else if (password.length()< 8){
+            message = "Passwort muss mehr wie acht Zeichen beinhalten";
+        }
+        else if (password.length() > 15){
+            message = "Passwort darf nicht mehr wie 15 Zeichen beinhalten";
+        }
 
 
+        return message;
+    }
+
+
+    public String checkForCorrectLogin(User user) {
+        return database.checkForCorrectLogin(user);
+    }
 }

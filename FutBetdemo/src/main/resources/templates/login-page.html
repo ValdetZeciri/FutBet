@@ -6,24 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" th:href="@{login-page.css}">
-  <script defer th:src="@{js/login-page.js}"></script>
+  <script  th:src="@{js/login-page.js}"></script>
+
+
 </head>
 
 <body>
   <main id="main-holder">
     <h1 id="login-header">Login</h1>
-    
-    <div id="login-error-msg-holder">
+
+    <div id="login-error-msg-holder" ><p th:text="${message}"></p>
     </div>
     
-    <form id="login-form" action="#"  th:action="@{/login-page}" th:object="${at.htl.futbetdemo.model.User}" method="post">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+    <form th:action="@{/login-page}" th:object="${user}" method="post">
+      <input type="text" th:field="*{userName}" name="username" class="login-form-field" placeholder="Username">
+      <br>
+      <input type="password" th:field="*{id}" name="password" class="login-form-field" placeholder="Password">
+      <br>
       <input type="submit" value="Login" id="login-form-submit">
     </form>
-    <p th:href="@{register-page.html}" class="login-form-register" value="Sign Up">
 
-
+    <a th:href="@{register-page}">Sign Up</a>
   </main>
 </body>
 

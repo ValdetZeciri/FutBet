@@ -1,10 +1,27 @@
 package at.htl.futbetdemo.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private int id;
-    private int userName;
-    private List<Group> groupList = new ArrayList<>();
+    private String id;
+    private String userName;
+
+
+    public String  getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

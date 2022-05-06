@@ -2,6 +2,7 @@ package at.htl.futbetdemo.database;
 
 import at.htl.futbetdemo.model.FutBetModel;
 import at.htl.futbetdemo.model.Leagues;
+import at.htl.futbetdemo.model.User;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -56,5 +57,10 @@ public class Database {
                 ""
         );
 
+    }
+
+    public String checkForCorrectLogin(User user) {
+
+        return "correct";
     }
 }
