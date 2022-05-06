@@ -1,8 +1,6 @@
 package at.htl.futbetdemo.database;
 
-import at.htl.futbetdemo.model.FutBetModel;
-import at.htl.futbetdemo.model.Leagues;
-import at.htl.futbetdemo.model.User;
+import at.htl.futbetdemo.model.*;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -37,30 +35,109 @@ public class Database {
         }
     }
 
-    public void addUser(String userName, String password) throws SQLException {
+    public int addUser(User user) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO USER_(name, password) VALUES(?, ?)"
+        );
+        preparedStatement.setString(1, user.getUserName());
+        preparedStatement.setString(2, user.getPassword());
+        preparedStatement.execute();
+        preparedStatement.close();
 
-         PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO USER_ (name, password) VALUES (?,?)"
-         );
+        PreparedStatement preparedStatement1 = connection.prepareStatement(
+                "SELECT id FROM USER_ WHERE name = ?"
+        );
+        preparedStatement1.setString(1, user.getUserName());
+        ResultSet resultSet = preparedStatement.executeQuery();
 
-         preparedStatement.setString(1, userName);
-         preparedStatement.setString(2, password);
+        while(resultSet.next()){
+            return resultSet.getInt(1);
+        }
 
-         preparedStatement.execute();
-         preparedStatement.close();
+        resultSet.close();
+        preparedStatement1.execute();
+        preparedStatement1.close();
+        return 0;
     }
 
-    public void createUserGroup(int userId, String groupName, Leagues league) throws SQLException, UnirestException {
+    public void createGroup(String groupName, Leagues league) throws SQLException, UnirestException {
         int id = model.getLeagueId(league);
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                ""
+                "INSERT INTO GROUP_(name, competition) VALUES(?, ?)"
         );
 
+        preparedStatement.setString(1,groupName);
+        preparedStatement.setInt(2, id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
-    public String checkForCorrectLogin(User user) {
+    public void addUserToGroup(int userId, int groupId) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO USER_GROUP(userId, groupId) VALUES (?,?)"
+        );
 
-        return "correct";
+        preparedStatement.setInt(1, userId);
+        preparedStatement.setInt(2, groupId);
+        preparedStatement.execute();
+        preparedStatement.close();
+    }
+
+    public void insertGame(Game game) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO GAME(team1Id, team2Id, toreHeim, toreAuswaerts, competitionId) Values (?,?,?,?,?)"
+        );
+
+        preparedStatement.setInt(1, game.getTeam1().getId());
+        preparedStatement.setInt(2,game.getTeam2().getId());
+        preparedStatement.setInt(3, game.getGoals1());
+        preparedStatement.setInt(4,game.getGoals2());
+        preparedStatement.setInt(5,game.getCompetitionId());
+        preparedStatement.execute();
+        preparedStatement.close();
+    }
+
+    public void addBet(User user, Game game, int tore1, int tore2) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "Insert INTO BET(idOfUser, gameId, toreHeim, toreAuswaerts)"
+        );
+
+        preparedStatement.setInt(1, user.getId());
+        preparedStatement.setInt(2,game.getId());
+        preparedStatement.setInt(3,tore1);
+        preparedStatement.setInt(4,tore2);
+        preparedStatement.execute();
+        preparedStatement.close();
+    }
+
+    public void insertCompetition(Competition competition) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "Insert INTO COMPETITION(name) VALUES (?)"
+        );
+
+        preparedStatement.setString(1, competition.getName());
+        preparedStatement.execute();
+        preparedStatement.close();
+    }
+
+    public void createTeam(Team team) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO TEAM(name) VALUES (?)"
+        );
+        preparedStatement.setString(1, team.getName());
+        preparedStatement.execute();
+        preparedStatement.close();
+    }
+
+    public void addTeamToCompetition(Competition competition, Team team) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO COMPETITION_TEAM(comId, teamId) VALUES (?,?)"
+        );
+
+        preparedStatement.setInt(1, competition.getId());
+        preparedStatement.setInt(2, team.getId());
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 }
