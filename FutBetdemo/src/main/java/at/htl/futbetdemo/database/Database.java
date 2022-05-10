@@ -3,6 +3,7 @@ package at.htl.futbetdemo.database;
 import at.htl.futbetdemo.model.*;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import oracle.jdbc.OracleDatabaseException;
 
 import java.sql.*;
 
@@ -36,20 +37,29 @@ public class Database {
     }
 
     public int addUser(User user) throws SQLException {
+
+        try{
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO USER_(name, password, emailAdress) VALUES(?, ?, ?)"
         );
         preparedStatement.setString(1, user.getUserName());
         preparedStatement.setString(2, user.getPassword());
         preparedStatement.setString(3, user.getEmailAdress());
-        preparedStatement.execute();
-        preparedStatement.close();
+
+
+            preparedStatement.execute();
+            preparedStatement.close();
+        }catch(Exception e) {
+
+            System.out.println(e.getMessage());
+            return -1;
+        }
 
         PreparedStatement preparedStatement1 = connection.prepareStatement(
                 "SELECT id FROM USER_ WHERE name = ?"
         );
         preparedStatement1.setString(1, user.getUserName());
-        ResultSet resultSet = preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement1.executeQuery();
 
         while(resultSet.next()){
             return resultSet.getInt(1);
@@ -104,7 +114,7 @@ public class Database {
                 "Insert INTO BET(idOfUser, gameId, toreHeim, toreAuswaerts)"
         );
 
-        preparedStatement.setInt(1, user.getId());
+        //preparedStatement.setInt(1, user.getId());
         preparedStatement.setInt(2,game.getId());
         preparedStatement.setInt(3,tore1);
         preparedStatement.setInt(4,tore2);
@@ -144,7 +154,7 @@ public class Database {
 
     public boolean checkUserLogin(User user) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "SELECT (emailAdress, password) FROM USER_"
+                "SELECT emailAdress, password FROM USER_"
         );
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -155,5 +165,19 @@ public class Database {
         }
 
         return false;
+    }
+
+    public String getUserWithEmail(String email) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT name FROM USER_ WHERE emailadress = ?"
+        );
+
+        preparedStatement.setString(1, email);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getString(1);
     }
 }

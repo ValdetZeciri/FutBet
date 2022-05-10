@@ -162,6 +162,13 @@ public class FutBetModel {
         if (database.checkUserLogin(user)==true){
             return "correct";
         }
-        return "incorrect";
+        return "wrong password or email";
+    }
+
+    public int addUser(User user) throws SQLException {
+        return database.addUser(user);
+    }
+    public String getUserWithEmail(String email) throws SQLException {
+        return database.getUserWithEmail(email);
     }
 }
