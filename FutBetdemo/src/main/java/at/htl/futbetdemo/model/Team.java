@@ -9,6 +9,9 @@ public class Team {
         this.id = id;
     }
 
+    public Team(Object o) {
+    }
+
     public int getId() {
         return id;
     }

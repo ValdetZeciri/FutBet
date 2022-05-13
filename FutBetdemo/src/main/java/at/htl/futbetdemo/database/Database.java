@@ -21,7 +21,6 @@ public class Database {
     // INSERT INTO USER_ (name, password) VALUES ("Raphael", Lollol12)
 
     private Database(FutBetModel model) throws SQLException {
-        this.model = model;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             connection= DriverManager.getConnection(
