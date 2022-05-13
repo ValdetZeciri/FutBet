@@ -129,6 +129,11 @@ public class Controller {
         return "team";
     }
 
+    @GetMapping("profile")
+    public String profileCard(){
+        return "profile";
+    }
+
     @GetMapping("/login-page")
     public String getLogin(Model model){
 
