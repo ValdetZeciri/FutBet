@@ -23,6 +23,7 @@ import java.util.Scanner;
 
 import static at.htl.futbetdemo.database.Database.getInstance;
 
+
 public class FutBetModel {
     Database database;
 
@@ -32,6 +33,7 @@ public class FutBetModel {
     }
 
     public HttpResponse<String> makeApiConnectionWithParamenter(String type, String filter, String value) throws UnirestException {
+
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type +"?" + filter +"="+ value)
                 .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
