@@ -48,6 +48,12 @@
     SKELETON
 -------------------------------------------------------------------*/
 
+
+.userName{
+	display: inline-block;
+}
+
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -98,6 +104,7 @@ a {
 	-ms-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
 	transition: all .3s ease-in-out;
+	white-space: nowrap;
 }
 
 .footer-bottom p a {

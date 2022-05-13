@@ -10,11 +10,15 @@ public class User {
     private List<Group> groupList = new ArrayList<>();
     private String password;
 
-    public User(String userName, String password, String emailAdress){
-        this.userName = userName;
-        this.password = password;
-        this.emailAdress = emailAdress;
+    public User(){
+
     }
+
+//    public User(String userName, String password, String emailAdress){
+//        this.userName = userName;
+//        this.password = password;
+//        this.emailAdress = emailAdress;
+//    }
 
     public int getId() {
         return id;
@@ -45,7 +49,15 @@ public class User {
         return emailAdress;
     }
 
-    public User(){
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
+    public void setEmailAdress(String emailAdress) {
+        this.emailAdress = emailAdress;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
