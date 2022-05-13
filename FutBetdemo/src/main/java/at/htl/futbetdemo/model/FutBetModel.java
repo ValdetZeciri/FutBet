@@ -21,15 +21,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import static at.htl.futbetdemo.database.Database.getInstance;
+
+
 public class FutBetModel {
     Database database;
 
 
     public FutBetModel() throws SQLException {
-         database = Database.getInstance(this);
+         database = getInstance(this);
     }
 
     public HttpResponse<String> makeApiConnectionWithParamenter(String type, String filter, String value) throws UnirestException {
+
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type +"?" + filter +"="+ value)
                 .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
@@ -170,5 +174,27 @@ public class FutBetModel {
     }
     public String getUserWithEmail(String email) throws SQLException {
         return database.getUserWithEmail(email);
+    }
+
+    public void getDataFromApi() throws UnirestException, SQLException {
+        HttpResponse<String> response = makeApiConnectionWith2Paramenter("standings","league","season",String.valueOf(getLeagueId(Leagues.PremierLeague)),Integer.valueOf("2021"));
+        JSONObject jsonObject = new JSONObject(response.getBody());
+        JSONArray jsonArray = jsonObject.getJSONArray("response").getJSONObject(0).getJSONObject("league").getJSONArray("standings");
+
+        for(int i = 0; i < 20; i++){
+            JSONObject jB = jsonArray.getJSONObject(i);
+            System.out.println(jB.getJSONObject("team").get("name"));
+            database.createTeam(new Team((String) jB.getJSONObject("team").get("name"), i));
+        }
+    }
+
+    public HttpResponse<String> makeApiConnectionWith2Paramenter(String type, String filter,String filter2, String value, int value2) throws UnirestException {
+        Unirest.setTimeouts(0, 0);
+        HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type +"?" + filter +"="+ value + "&" + filter2 + "=" + value2)
+                .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
+                .header("x-rapidapi-host", "v3.football.api-sports.io")
+                .asString();
+
+        return response;
     }
 }

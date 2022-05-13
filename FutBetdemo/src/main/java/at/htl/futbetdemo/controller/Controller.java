@@ -1,7 +1,7 @@
 package at.htl.futbetdemo.controller;
 
-
-import at.htl.futbetdemo.model.FutBetModel;
+import at.htl.futbetdemo.model.*;
+import at.htl.futbetdemo.model.Competition;
 import at.htl.futbetdemo.model.User;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.apache.tomcat.util.json.ParseException;
@@ -23,9 +23,9 @@ public class Controller {
 
     FutBetModel futModel;
 
-
     public Controller() throws SQLException, IOException, JSONException, ParseException, UnirestException {
         futModel = new FutBetModel();
+
     }
 
 
