@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{loginPage.css}">
+    <script defer th:src="@{js/loginPage.js}"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+<h2>Fut Bet</h2>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form th:action="@{/register-page}" th:object="${user}" method="post">
+            <h1>Sign Up</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="social"><i class="fa fa-google"></i></a>
+                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <div><p th:text="${message2}"></p></div>
+            <span>or use your email for registration</span>
+            <input type="text" th:field="*{userName}" placeholder="Name" />
+            <input type="text" th:field="*{emailAdress}" placeholder="Email" />
+            <input type="password" th:field="*{password}" placeholder="Password" />
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form th:action="@{/login-page}" th:object="${user}" method="post">
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="social"><i class="fa fa-google"></i></a>
+                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <div><p th:text="${message1}"></p></div>
+            <span>or use your account</span>
+            <input  type="text" th:field="*{emailAdress}" placeholder="Email" />
+            <input type="password" th:field="*{password}" placeholder="Password" />
+            <a href="#">Forgot your password?</a>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Sign In</h1>
+                <p>Login to start betting now</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Sign Up</h1>
+                <p>Sign up now to bet with your friends</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -66,11 +66,11 @@
                            <!-- button section -->
                            <ul class="login">
                               <li class="login-modal">
-                                 <a th:href="@{login-page.html}" class="login"><i class="fa fa-user"></i>Login</a>
+                                 <a th:href="@{profile}" class="login"><i class="fa fa-user"></i><div class="userName" th:text="${userName}"></div></a>
                               </li>
                               <li>
                                  <div class="cart-option">
-                                    <a th:href="@{#}"><i class="fa fa-user-plus"></i>Register</a>
+                                    <a th:href="@{logOut}"></i>Log Out</a>
                                  </div>
                               </li>
                            </ul>
@@ -293,6 +293,9 @@
                            <li><a th:href="@{news.html}">Latest News</a></li>
                            <!--<li><a th:href="@{matche.html}">Recent Matchs</a></li>-->
                            <li><a th:href="@{contact.html}">Contact Us</a></li>
+                           <li><a th:text="${userName}" th:href="@{profile}"></a></li>
+                           <li><a th:href="@{logOut}">Log Out</a></li>
+
                         </ul>
                      </div>
                   </div>

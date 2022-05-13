@@ -6,13 +6,19 @@ import java.util.List;
 public class User {
     private int id;
     private String userName;
+    private String emailAdress;
     private List<Group> groupList = new ArrayList<>();
     private String password;
 
-    public User(String userName, String password){
-        this.userName = userName;
-        this.password = password;
+    public User(){
+
     }
+
+//    public User(String userName, String password, String emailAdress){
+//        this.userName = userName;
+//        this.password = password;
+//        this.emailAdress = emailAdress;
+//    }
 
     public int getId() {
         return id;
@@ -37,5 +43,21 @@ public class User {
 
     public void setId(int id){
         this.id = id;
+    }
+
+    public String getEmailAdress() {
+        return emailAdress;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setEmailAdress(String emailAdress) {
+        this.emailAdress = emailAdress;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
