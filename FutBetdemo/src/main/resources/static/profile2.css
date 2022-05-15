@@ -1971,6 +1971,7 @@ a {
     border-radius: 4px;
 }
 .u-input-rectangle {
+    resize:none;
     border-radius: 0;
 }
 .u-form-select-wrapper {

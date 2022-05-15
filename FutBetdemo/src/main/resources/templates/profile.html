@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
+<html xmlns:th="http://www.thymeleaf.org" style="font-size: 16px;">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -33,18 +33,18 @@
                 <div class="u-border-1 u-border-grey-60 u-border-no-bottom u-border-no-right u-border-no-top u-container-style u-grey-10 u-group u-group-2">
                     <div class="u-container-layout u-container-layout-2">
                         <div class="u-form u-form-1">
-                            <form action="#" method="POST" class="u-clearfix u-form-spacing-9 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;">
+                            <form method="POST" th:object="${user}" th:action="@{/profile}" class="u-clearfix u-form-spacing-9 u-form-vertical u-inner-form"  source="custom" name="form" style="padding: 10px;">
                                 <div class="u-form-group u-form-name">
                                     <label for="name-2729" class="u-label">Name</label>
-                                    <input type="text" id="name-2729" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                                    <input th:placeholder="${user.getUserName()}" th:field="*{userName}" type="text" id="name-2729" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                                 </div>
                                 <div class="u-form-email u-form-group">
                                     <label for="email-2729" class="u-label">E-Mail</label>
-                                    <input type="email" id="email-2729" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                                    <input th:placeholder="${user.getEmailAdress()}" th:field="*{emailAdress}" type="email" id="email-2729" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                                 </div>
                                 <div class="u-form-group u-form-textarea u-form-group-3">
                                     <label for="textarea-f20a" class="u-label">Account Info</label>
-                                    <textarea rows="4" cols="50" id="textarea-f20a" name="textarea" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
+                                    <textarea th:placeholder="${user.getInfo()}" th:field="*{info}" rows="4" cols="50" id="textarea-f20a" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
                                 </div>
                                 <div class="u-align-left u-form-group u-form-submit">
                                     <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-1 u-hover-feature u-radius-50 u-btn-1">Update Info</a>
@@ -76,7 +76,7 @@
 	L16.097,43.395l-4.773,0.53l0.53-4.773l22.38-22.378c0.391-0.391,0.391-1.023,0-1.414s-1.023-0.391-1.414,0L10.44,37.738
 	l-3.183,0.354L34.94,10.409l9.9,9.9L17.157,47.992L17.511,44.809z M49.082,16.067l-9.9-9.9l1.415-1.415l9.9,9.9L49.082,16.067z"></path></svg><img></span>&nbsp;Update Picture
                 </a>
-                <p class="u-text u-text-1">User Name</p><span class="u-file-icon u-icon u-icon-2"><img src="images/599928.png" alt=""></span>
+                <p th:text="${userName}" class="u-text u-text-1"></p><span class="u-file-icon u-icon u-icon-2"><img src="images/599928.png" alt=""></span>
                 <p class="u-text u-text-default u-text-2">Groups:</p><span class="u-file-icon u-icon u-icon-3"><img src="images/3314642.png" alt=""></span>
                 <p class="u-text u-text-default u-text-3">Friends:</p><span class="u-file-icon u-icon u-icon-4"><img src="images/3112946.png" alt=""></span>
                 <p class="u-text u-text-default u-text-4">Trophies:</p>

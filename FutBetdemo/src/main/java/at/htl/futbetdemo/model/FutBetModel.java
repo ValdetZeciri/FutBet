@@ -85,7 +85,7 @@ public class FutBetModel {
         
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/leagues/teams")
-                .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
+                .header("x-rapidapi-key", "87cc7f4e67ba3b53809562372a349d51")
                 .header("x-rapidapi-host", "v3.football.api-sports.io")
                 .asString();
 
@@ -191,7 +191,7 @@ public class FutBetModel {
     public HttpResponse<String> makeApiConnectionWith2Paramenter(String type, String filter,String filter2, String value, int value2) throws UnirestException {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type +"?" + filter +"="+ value + "&" + filter2 + "=" + value2)
-                .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
+                .header("x-rapidapi-key", "87cc7f4e67ba3b53809562372a349d51")
                 .header("x-rapidapi-host", "v3.football.api-sports.io")
                 .asString();
 

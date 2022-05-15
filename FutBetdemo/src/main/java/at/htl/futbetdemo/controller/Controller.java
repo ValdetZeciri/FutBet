@@ -26,6 +26,8 @@ public class Controller {
     public Controller() throws SQLException, IOException, JSONException, ParseException, UnirestException {
         futModel = new FutBetModel();
 
+       // futModel.testMethod();
+
     }
 
 
@@ -129,8 +131,28 @@ public class Controller {
         return "team";
     }
 
+    @PostMapping("profile")
+    public String postprofile(Model model, HttpServletRequest request, @ModelAttribute User user){
+        return "profile";
+    }
+
     @GetMapping("profile")
-    public String profileCard(){
+    public String profileCard(Model model, HttpServletRequest request){
+
+        HttpSession session = request.getSession();
+
+        try {
+            User user = (User) session.getAttribute("user");
+            model.addAttribute("userName", user.getUserName());
+            model.addAttribute("user", user);
+
+        }catch (Exception e){
+            model.addAttribute("user", new User());
+            model.addAttribute("message1", "");
+            model.addAttribute("message2", "");
+            return "loginPage";
+        }
+
         return "profile";
     }
 
