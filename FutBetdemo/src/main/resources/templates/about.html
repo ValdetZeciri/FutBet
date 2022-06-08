@@ -130,19 +130,71 @@
             </div>
          </div>
       </section>
-      <section id="contant" class="contant main-heading" style="padding-bottom:0;margin-bottom:-1px;position:relative;z-index:1;">
+      <section id="contant" class="contant main-heading" style="padding-bottom:0;margin-bottom:-1px;position:relative;">
          <div class="aboutus">
             <div class="container">
                <div class="row">
                   <div class="col-md-12 col-sm-12">
                      <div class="col-md-7 col-sm-7 col-xs-12">
                         <div class="full">
-                           <h3>SPORTY LEAGUE HISTORY</h3>
-                           <p>More than 240 million people around the world play soccer regularly according to the Federation Internationale de Football Association (FIFA). The game has evolved from the sport of kicking a rudimentary animal-hide ball around into the World Cup sport it is today.
-                              Records trace the history of soccer back more than 2,000 years ago to ancient China. Greece, Rome, and parts of Central America also claim to have started the sport; but it was England that transitioned soccer, or what the British and many other people around the world call “football,” into the game we know today. The English are credited with recording the first uniform rules for the sport, including forbidding tripping opponents and touching the ball with hands.                              
-                              As the sport developed, more rules were implemented and more historical landmarks were set. For example, the penalty kick was introduced in 1891. FIFA became a member of the International Football Association Board of Great Britain in 1913. Red and yellow cards were introduced during the 1970 World Cup finals. More recent major changes include goalkeepers being banned from handling deliberate back passes in 1992 and tackles from behind becoming red-card penalties in 1998.                              
-                              Some of the top players throughout history include Pele (Edson Arantes Do Nascimento) from Brazil, who scored six goals in the 1958 World Cup and helped Brazil claim its first title; Lev Yashin from Russia, who claimed to have saved more than 150 penalty shots during his outstanding goal-tending career; and Marco Van Basten from Holland, who won several very prestigious soccer awards during one year alone. There are many debates over who the greatest soccer players are of all time; but players like Zinedine Zidane, Diego Maradona, Michel Platini, Lionel Messi, and Roberto Baggio make almost every list.                  
-                           </p>
+                           <h3>Our Team</h3>
+                           <div class="rowy">
+                              <div class="columny">
+                                 <div class="cardy">
+                                    <img th:src="@{images/robert.png}" alt="Robert" style="width:100%">
+                                    <div class="containery">
+                                       <p></p>
+                                       <h2>Robert Nguyen</h2>
+                                       <p class="titley">Group Member</p>
+                                       <p>17 years old</p>
+                                       <p>from Linz</p>
+                                       <p><button class="buttony">Contact</button></p>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="columny">
+                                 <div class="cardy">
+                                    <img th:src="@{images/raphael.png}" alt="Raphael" style="width:100%">
+                                    <div class="containery">
+                                       <p></p>
+                                       <h2>Raphael Stangl</h2>
+                                       <p class="titley">Group Member</p>
+                                       <p>17 years old</p>
+                                       <p>from Linz</p>
+                                       <p><button class="buttony">Contact</button></p>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="columny">
+                                 <div class="cardy">
+                                    <img th:src="@{images/valdet.png}" alt="Valdet" style="width:100%">
+                                    <div class="containery">
+                                       <p></p>
+                                       <h2>Valdet Zeciri</h2>
+                                       <p class="titley">Group Leader</p>
+                                       <p>17 years old</p>
+                                       <p>from Linz</p>
+                                       <p><button class="buttony">Contact</button></p>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="columny">
+                                 <div class="cardy">
+                                    <img th:src="@{images/vanja.png}" alt="Vanja" style="width:100%">
+                                    <div class="containery">
+                                       <p></p>
+                                       <h2>Vanja Visekruna</h2>
+                                       <p class="titley">Group Member</p>
+                                       <p>16 years old</p>
+                                       <p>from Linz</p>
+                                       <p><button class="buttony">Contact</button></p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -221,4 +273,58 @@
       <!-- ALL PLUGINS -->
       <script th:src="@{js/custom.js}"></script>
    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db497358aa278a6',m:'v0XQX1uKZ4y3Vgj_G86_cqI46mwg8EzWiEOPLe8ESoI-1644488277-0-AXA20yO9geOVk2/dQr9tmgu/vtn5+4dYlubNWEebeEdjUtgA1nRV3Fq4GAZznomR5ehjtQg2mMGL6DHv8TECN2zIkdAG0nQSMOe5Eysh3XSayhrPmlbosUOWk1EOcIqx52y1wF8GH71yw51eRAKtLHS1M4R+VE4oNmLl0KcszruIxYKk38I7nEx9mUUexEqzYg==',s:[0x60b86451b1,0x2f3c880b6e],}})();</script></body>
+   <style>
+      /* Three columns side by side */
+      .columny {
+         float: left;
+         width: 25%;
+         margin-bottom: 16px;
+         padding: 0 8px;
+      }
+
+      /* Display the columns below each other instead of side by side on small screens */
+      @media screen and (max-width: 650px) {
+         .column {
+            width: 100%;
+            display: block;
+         }
+      }
+
+      /* Add some shadows to create a card effect */
+      .cardy {
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      /* Some left and right padding inside the container */
+      .containery {
+         padding: 0 16px;
+      }
+
+      /* Clear floats */
+      .containery::after, .row::after {
+         content: "";
+         clear: both;
+         display: table;
+      }
+
+      .titley {
+         color: grey;
+      }
+
+      .buttony {
+         border: none;
+         outline: 0;
+         display: inline-block;
+         padding: 8px;
+         color: white;
+         background-color: #000;
+         text-align: center;
+         cursor: pointer;
+         width: 100%;
+      }
+
+      .buttony:hover {
+         background-color: #555;
+      }
+   </style>
 </html>

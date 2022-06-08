@@ -79,6 +79,13 @@ public class FutBetModel {
 
     }
 
+    public String updateUser(User user) throws SQLException {
+        return database.updateUser(user);
+    }
+
+    public List<Group> getGroupsForUser(int id) throws SQLException {
+        return database.getGroupForUser(id);
+    }
 
 
     public void testMethod() throws IOException, ParseException, JSONException, UnirestException {
@@ -97,6 +104,21 @@ public class FutBetModel {
 
             System.out.println(team.getString("name"));
 
+    }
+
+    public Leagues getLeagueForId(int id){
+        if (id == 39) {
+            return Leagues.PremierLeague;
+        }else if (id == 61){
+            return Leagues.Ligue1;
+        }else if (id == 78){
+            return Leagues.Bundesliga1;
+        }else if (id == 140){
+            return Leagues.LaLiga;
+        }else if (id == 135){
+            return Leagues.SerieA;
+        }
+        return null;
     }
 
     public HttpResponse<String> getLeague(Leagues league) throws UnirestException {
@@ -196,5 +218,24 @@ public class FutBetModel {
                 .asString();
 
         return response;
+    }
+
+    public int getIdForUser(User user) throws SQLException {
+        return database.getIdForUser(user);
+    }
+
+    public String checkForRightGroupName(String name) {
+        if (name.length() > 15){
+            return "Gruppenname darf maximal 15 Zeichen haben";
+        }
+        return "";
+    }
+
+    public int createGroup(Group group, int creatorId) throws SQLException, UnirestException {
+        return database.createGroup(group, creatorId);
+    }
+
+    public void addUserToGroup(int userId, int groupId) throws SQLException {
+        database.addUserToGroup(userId, groupId);
     }
 }
