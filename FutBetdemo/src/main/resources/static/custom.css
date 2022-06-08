@@ -136,6 +136,7 @@
      float: left;
      width: 100%;
      position: absolute;
+     display: block;
      z-index: 1;
      top: 0;
      min-height: 150px;
@@ -188,7 +189,7 @@
      padding: 9px 25px;
      color: #fff;
      font-size: 13px;
-     background: #d8302f;
+     background: #ab0b0b;
      border-radius: 50px;
      float: left;
 }

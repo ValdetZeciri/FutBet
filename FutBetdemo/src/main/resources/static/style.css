@@ -48,7 +48,6 @@
     SKELETON
 -------------------------------------------------------------------*/
 
-
 .userName{
 	display: inline-block;
 }
@@ -61,6 +60,7 @@
 }
 
 body {
+	background: url(images/login-backround.jpg) repeat-y;
 	color: #999;
 	font-size: 15px;
 	font-family: 'Poppins', sans-serif;
@@ -94,6 +94,181 @@ body.demos .container-fluid {
 	max-width: 1080px
 }
 
+th {
+	color: #ffffff;;
+	background:#D8203F;
+	border-bottom:4px solid #9ea7af;
+	border-right: 1px solid #ffffff;
+	font-size:15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-weight: 100;
+	font-family: 'Montserrat', sans-serif;
+	text-align:left;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	vertical-align:middle;
+}
+
+th:first-child {
+	border-top-left-radius:3px;
+}
+
+th:last-child {
+	border-top-right-radius:3px;
+	border-right:none;
+}
+
+tr {
+	border-bottom: 1px solid #C1C3D1;
+	border-top:  1px solid #C1C3D1;
+	color:#666B85;
+	font-size:16px;
+	font-weight:normal;
+	text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+tr:hover td {
+	background: #88898d;
+	color:#FFFFFF;
+	border-top: 1px solid #22262e;
+}
+
+tr:first-child {
+	border-top:none;
+}
+
+tr:last-child {
+	border-bottom:none;
+}
+
+table {
+	margin-left:10%;
+	overflow-y:scroll;
+	overflow-y: auto;
+	height:300px;
+	max-width: 40%;
+	float: left;
+	position: relative;
+	display: inline-block;
+}
+
+.dropdownInput {
+	position: relative;
+	float: right;
+	width: 45%;
+	margin-top: 5%
+}
+
+
+
+.groupButton {
+	margin-left: 5%;
+	float:left;
+	position: relative;
+	width: 20%;
+	border: #999999;
+	color: #ffffff;;
+	background:#D8203F;
+	border-radius: 10px;
+	transition: 0.3s;
+}
+
+.groupButton:hover{
+	color: #000000;
+	background-color: #f6eeee;
+	border: #1a1a1a;
+}
+
+.groupForm {
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	height: 250px;
+	width: 40%;
+	margin-top: 5%;
+}
+
+td {
+	background:#FFFFFF;
+	padding-right:20px;
+	padding-left: 20px;
+	text-align:left;
+	vertical-align:middle;
+	font-weight:300;
+	font-size:18px;
+	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+	border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+	border-right: 0px;
+}
+
+th.text-left {
+	text-align: left;
+}
+
+th.text-center {
+	text-align: center;
+}
+
+th.text-right {
+	text-align: right;
+}
+
+td.text-left {
+	text-align: left;
+}
+
+td.text-center {
+	text-align: center;
+}
+
+td.text-right {
+	text-align: right;
+}
+
+
+.contentBlock {
+	position: relative;
+	display: table;
+	width: 100%;
+	margin-bottom: 50px;
+
+}
+
+.contentElement {
+	margin-top: 50px;
+	display: table-cell;
+	display: block;
+	float:left;
+	min-width: 650px;
+	width: 50%;
+
+}
+
+.contentBox {
+	box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+	min-height: 420px;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	position: relative;
+	margin-left: 10%;
+	min-width: 500px;
+	width: 80%;
+	align-content: center;
+
+}
+
+.p.groupText {
+	text-align:left; display: block; float: left; width: 40%
+}
+
+.headerBlock {
+	display: inline-block;
+	position: relative;
+	min-height: 200px;
+	width: 100%;
+}
 a {
 	/*color: #1f1f1f;*/
 	color: #f3e7e7;
@@ -1863,6 +2038,9 @@ select.mobile-device {
 	padding: 90px 0 80px;
 	color: #999;
 	background-color: #1f1f1f;
+	bottom: 0;
+	position: absolute;
+
 }
 
 .footer .widget-title {

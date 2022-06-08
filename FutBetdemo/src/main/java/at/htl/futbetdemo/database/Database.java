@@ -6,6 +6,8 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import oracle.jdbc.OracleDatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
     private static Database instance = null;
@@ -23,9 +25,10 @@ public class Database {
 
     public Database(FutBetModel model) throws SQLException {
         try {
+            this.model = model;
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            connection= DriverManager.getConnection(
-                    "jdbc:oracle:thin:@delphi.htl-leonding.ac.at:1521:delphidb","if190105","oracle");
+            connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@delphi.htl-leonding.ac.at:1521:delphidb", "if190105", "oracle");
 
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -37,18 +40,18 @@ public class Database {
 
     public int addUser(User user) throws SQLException {
 
-        try{
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO USER_(name, password, emailAdress) VALUES(?, ?, ?)"
-        );
-        preparedStatement.setString(1, user.getUserName());
-        preparedStatement.setString(2, user.getPassword());
-        preparedStatement.setString(3, user.getEmailAdress());
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO USER_(name, password, emailAdress) VALUES(?, ?, ?)"
+            );
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getEmailAdress());
 
 
             preparedStatement.execute();
             preparedStatement.close();
-        }catch(Exception e) {
+        } catch (Exception e) {
 
             System.out.println(e.getMessage());
             return -1;
@@ -60,7 +63,7 @@ public class Database {
         preparedStatement1.setString(1, user.getUserName());
         ResultSet resultSet = preparedStatement1.executeQuery();
 
-        while(resultSet.next()){
+        while (resultSet.next()) {
             return resultSet.getInt(1);
         }
 
@@ -70,17 +73,63 @@ public class Database {
         return 0;
     }
 
-    public void createGroup(String groupName, Leagues league) throws SQLException, UnirestException {
-        int id = model.getLeagueId(league);
 
+    public int getCompIdForApiId(int apiId) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO GROUP_(name, competition) VALUES(?, ?)"
+                "SELECT competitionid From Competition WHERE apiid = ?"
         );
 
-        preparedStatement.setString(1,groupName);
-        preparedStatement.setInt(2, id);
+        preparedStatement.setInt(1, apiId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getInt("competitionId");
+    }
+
+    public int getApiIdForCompId(int compId) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT apiid From Competition WHERE competitionid = ?"
+        );
+
+        preparedStatement.setInt(1, compId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getInt("apiid");
+    }
+
+
+    public int createGroup(Group group, int creatorId) throws SQLException, UnirestException {
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO GROUP_(name, competitionid, creatorId) VALUES(?, ?, ?)"
+        );
+
+        preparedStatement.setString(1, group.getName());
+        preparedStatement.setInt(2, getCompIdForApiId(Integer.valueOf(group.getCompetitionName())));
+        preparedStatement.setInt(3, creatorId);
+
         preparedStatement.execute();
         preparedStatement.close();
+
+        PreparedStatement preparedStatement1 = connection.prepareStatement(
+                "SELECT id FROM GROUP_ WHERE name = ? AND competitionId = ? AND creatorId = ?"
+        );
+
+        preparedStatement1.setString(1, group.getName());
+        preparedStatement1.setInt(2, getCompIdForApiId(Integer.valueOf(group.getCompetitionName())));
+        preparedStatement1.setInt(3, creatorId);
+
+        ResultSet resultSet = preparedStatement1.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getInt("id");
+
     }
 
     public void addUserToGroup(int userId, int groupId) throws SQLException {
@@ -100,10 +149,10 @@ public class Database {
         );
 
         preparedStatement.setInt(1, game.getTeam1().getId());
-        preparedStatement.setInt(2,game.getTeam2().getId());
+        preparedStatement.setInt(2, game.getTeam2().getId());
         preparedStatement.setInt(3, game.getGoals1());
-        preparedStatement.setInt(4,game.getGoals2());
-        preparedStatement.setInt(5,game.getCompetitionId());
+        preparedStatement.setInt(4, game.getGoals2());
+        preparedStatement.setInt(5, game.getCompetitionId());
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -114,9 +163,9 @@ public class Database {
         );
 
         //preparedStatement.setInt(1, user.getId());
-        preparedStatement.setInt(2,game.getId());
-        preparedStatement.setInt(3,tore1);
-        preparedStatement.setInt(4,tore2);
+        preparedStatement.setInt(2, game.getId());
+        preparedStatement.setInt(3, tore1);
+        preparedStatement.setInt(4, tore2);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -157,12 +206,14 @@ public class Database {
         );
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        while(resultSet.next()){
-            if(user.getEmailAdress().equals(resultSet.getString(1))&&user.getPassword().equals(resultSet.getString(2))){
+        while (resultSet.next()) {
+            if (user.getEmailAdress().equals(resultSet.getString(1)) && user.getPassword().equals(resultSet.getString(2))) {
+               resultSet.close();
                 return true;
             }
         }
 
+        resultSet.close();
         return false;
     }
 
@@ -177,6 +228,85 @@ public class Database {
 
         resultSet.next();
 
-        return resultSet.getString(1);
+        String string = resultSet.getString(1);
+
+        resultSet.close();
+
+        return string;
+    }
+
+    public String getUserNameForId(int id) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "Select name from User_ WHERE id = ?"
+        );
+
+        preparedStatement.setInt(1, id);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getString("name");
+    }
+
+    public String updateUser(User user) throws SQLException {
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "UPDATE USER_ SET name = ?, emailadress = ?, info = ? WHERE id = ?"
+            );
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getEmailAdress());
+            preparedStatement.setString(3, user.getInfo());
+            preparedStatement.setInt(4, user.getId());
+
+            preparedStatement.execute();
+            preparedStatement.close();
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+            return "User oder Email existiert schon";
+        }
+
+        return "successful";
+    }
+
+    public int getIdForUser(User user) throws SQLException {
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT id FROM USER_ WHERE name = ? AND emailadress = ?"
+        );
+
+        preparedStatement.setString(1, user.getUserName());
+        preparedStatement.setString(2, user.getEmailAdress());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        int i = resultSet.getInt(1);
+
+        resultSet.close();
+
+        return i;
+    }
+
+    public List<Group> getGroupForUser(int id) throws SQLException {
+        List<Group> groupList = new ArrayList<>();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT id, name, competitionid, creatorId FROM GROUP_ WHERE id IN(SELECT groupId FROM USER_GROUP WHERE userId = ?)"
+        );
+
+        preparedStatement.setInt(1,id);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()){
+            groupList.add(new Group(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getInt("competitionId"), model.getLeagueForId(getApiIdForCompId(resultSet.getInt("competitionId"))).name(), resultSet.getInt("creatorId"), getUserNameForId(resultSet.getInt("creatorId"))));
+        };
+
+        resultSet.close();
+
+        return groupList;
     }
 }

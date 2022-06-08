@@ -55,13 +55,13 @@
                      </div>
                      <div class="col-md-6">
                         <div class="right_top_section">
-<!--                           &lt;!&ndash; social icon &ndash;&gt;-->
-<!--                           <ul class="social-icons pull-left">-->
-<!--                              <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>-->
-<!--                              <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>-->
-<!--                              <li><a class="youtube" href="https://www.youtube.com/channel/UCOn6aIFUnpqzvh3hPid84xQ"><i class="fa fa-youtube-play"></i></a></li>-->
-<!--                              <li><a class="instagram" href="https://instagram.com"><i class="fa fa-instagram"></i></a></li>-->
-<!--                           </ul>-->
+                           <!-- social icon -->
+                           <ul class="social-icons pull-left">
+                              <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                              <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                              <li><a class="youtube" href="https://www.youtube.com/channel/UCOn6aIFUnpqzvh3hPid84xQ"><i class="fa fa-youtube-play"></i></a></li>
+                              <li><a class="instagram" href="https://instagram.com"><i class="fa fa-instagram"></i></a></li>
+                           </ul>
                            <!-- end social icon -->
                            <!-- button section -->
                            <ul class="login">
@@ -103,6 +103,8 @@
                                           <!--<li><a th:href="@{team.html}">Team</a></li>-->
                                           <li><a th:href="@{news.html}">News</a></li>
                                           <li><a th:href="@{contact.html}">Contact</a></li>
+                                          <li><a th:href="@{bettingHome}">Betting Home</a></li>
+                                          <li><a th:href="@{groups}">Groups</a></li>
                                        </ul>
                                     </div>
                                  </nav>
@@ -130,8 +132,8 @@
                <!-- Indicators -->
                <ol class="carousel-indicators">
                   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-<!--                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
-<!--                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                </ol>
                <!-- Wrapper for slides -->
                <div class="carousel-inner" role="listbox">
@@ -141,69 +143,59 @@
                         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                            <div class="slider-contant" data-animation="animated fadeInRight">
+<<<<<<< HEAD
                               <h3>Bet with your friends<br> <span class="color-red">and </span> be José Mourinho!</h3>
                               <button class="btn btn-primary btn-lg">Read More</button>
+=======
+                              <h3>If you Don’t Practice<br>You <span class="color-red">Don’t Deserve</span><br>to win!</h3>
+                              <button class="btn btn-primary btn-lg"><a  th:href="@{about.html}">Read More</a></button>
                            </div>
                         </div>
                      </div>
                   </div>
-<!--                  &lt;!&ndash; /.item &ndash;&gt;-->
-<!--                  &lt;!&ndash; Second slide &ndash;&gt;-->
-<!--                  <div class="item skyblue" data-ride="carousel" data-interval="5000">-->
-<!--                     <div class="carousel-caption">-->
-<!--                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>-->
-<!--                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">-->
-<!--                           <div class="slider-contant" data-animation="animated fadeInRight">-->
-<!--                              <h3>If you Don’t Practice<br>You <span class="color-red">Don’t Deserve</span><br>to win!</h3>-->
-<!--                              <button class="btn btn-primary btn-lg">Read More</button>-->
-<!--                           </div>-->
-<!--                        </div>-->
-<!--                     </div>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; /.item &ndash;&gt;-->
-<!--                  &lt;!&ndash; Third slide &ndash;&gt;-->
-<!--                  <div class="item darkerskyblue" data-ride="carousel" data-interval="5000">-->
-<!--                     <div class="carousel-caption">-->
-<!--                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>-->
-<!--                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">-->
-<!--                           <div class="slider-contant" data-animation="animated fadeInRight">-->
-<!--                              <h3>If you Don’t Practice<br>You <span class="color-red">Don’t Deserve</span><br>to win!</h3>-->
-<!--                              <button class="btn btn-primary btn-lg">Read More</button>-->
-<!--                           </div>-->
-<!--                        </div>-->
-<!--                     </div>-->
-<!--                  </div>-->
+                  <!-- /.item -->
+                  <!-- Second slide -->
+                  <div class="item skyblue" data-ride="carousel" data-interval="5000">
+                     <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                           <div class="slider-contant" data-animation="animated fadeInRight">
+                              <h3>Start betting with <br>People <span class="color-red">all around</span><br>the world!</h3>
+                              <button class="btn btn-primary btn-lg"><a  th:href="@{bettingHome}">Start Betting</a></button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- /.item -->
+                  <!-- Third slide -->
+                  <div class="item darkerskyblue" data-ride="carousel" data-interval="5000">
+                     <div class="carousel-caption">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                           <div class="slider-contant" data-animation="animated fadeInRight">
+                              <h3>Create Groups <br>and bet with<br><span class="color-red">your Friends</span></h3>
+                              <button class="btn btn-primary btn-lg"><a  th:href="@{groups}">Groups</a></button>
+>>>>>>> b9f76013caa0adcfc80b64bb73bae16cc49f244e
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                   <!-- /.item -->
                </div>
-               <!-- /.carousel-inner -->
-               <!-- Controls -->
-<!--               <a class="left carousel-control" th:href="@{#carousel-example-generic}" role="button" data-slide="prev">-->
-<!--               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
-<!--               <span class="sr-only">Previous</span>-->
-<!--               </a>-->
-<!--               <a class="right carousel-control" th:href="@{#carousel-example-generic}" role="button" data-slide="next">-->
-<!--               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
-<!--               <span class="sr-only">Next</span>-->
-<!--               </a>-->
+
+               <a class="left carousel-control" th:href="@{#carousel-example-generic}" role="button" data-slide="prev">
+               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+               </a>
+               <a class="right carousel-control" th:href="@{#carousel-example-generic}" role="button" data-slide="next">
+               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+               </a>
             </div>
             <!-- /.carousel -->
       </div>
-         <div class="sec-center">
-            <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-            <label class="for-dropdown" for="dropdown">League<i class="uil uil-arrow-down"></i></label>
-            <div class="section-dropdown">
-               <a href="#">Premier League <i class="uil uil-arrow-right"></i></a>
-               <input class="dropdown-sub" type="checkbox" id="dropdown-sub1" value="1" name="dropdown-sub"/>
-               <a href="#">La Liga <i class="uil uil-arrow-right"></i></a>
-               <input class="dropdown-sub" type="checkbox" id="dropdown-sub2" value="2" name="dropdown-sub"/>
-               <a href="#">Serie A <i class="uil uil-arrow-right"></i></a>
-               <input class="dropdown-sub" type="checkbox" id="dropdown-sub3" value="3" name="dropdown-sub"/>
-               <a href="#">Ligue 1 <i class="uil uil-arrow-right"></i></a>
-               <input class="dropdown-sub" type="checkbox" id="dropdown-sub4" value="4" name="dropdown-sub"/>
-               <a href="#">Eredivise <i class="uil uil-arrow-right"></i></a>
-               <input class="dropdown-sub" type="checkbox" id="dropdown-sub5" value="5" name="dropdown-sub"/>
-            </div>
 
+<<<<<<< HEAD
             <table id="table" class="content-table">
                <tr>
                   <th>Rank</th>
@@ -270,6 +262,9 @@
                </tr>
             </table>
             <footer id="footer" class="footer">
+=======
+      <footer id="footer" class="footer">
+>>>>>>> b9f76013caa0adcfc80b64bb73bae16cc49f244e
          <div class="container">
             <div class="row">
                <div class="col-md-4">
@@ -337,562 +332,5 @@
       <!-- ALL PLUGINS -->
       <script th:src="@{js/custom.js}"></script>
    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db496f3183478a6',m:'HJt5zihXS3PPU6cuWApuHRVM6.HUsTZkwXxiGtmF6Ck-1644488266-0-AZ8vnRyt9/8iJUYyA2fvZ9MvNUiWRZMkrohDhb0MM5jiM676FOdid1AXcczrCY/7G9oBBb/c4AxqykQC4RG0aw5f2J7zzWV3caXTUDc+An+kJMxS2uho3tKWkMjJD/cNW70YjolA/2PE+XG/8hgHWzKIZgWepLl0O4q3x2IuZvmnotRbrwfm5YVztrGihLa0jQ==',s:[0x8c01129900,0x91a1c4c083],}})();</script>
-         <script>
-            var eins = document.getElementById("dropdown-sub2");
-            var y = document.getElementById("dropdown-sub2").value;
-            console.log(y);
-            let nr = "39";
-            let va = "https://v3.football.api-sports.io/standings?league="+nr+"&season=2021"
-            fetch(va,{
-               "method": "GET",
-               "headers": {
-                  "x-rapidapi-host": "v3.football.api-sports.io",
-                  "x-rapidapi-key": "40355cab67b3c292940c6a363c1f05db"
-               }
-            })
-                    .then(res => res.json())
-                    .then(res => {console.log(res.response[0].league.standings[0][1].team.logo)
-
-                       let data1=""
-                       let data3=""
-                       let data4=""
-                       let data5=""
-
-                       for(var i = 0; i < 20; i++){
-
-                          data1 = `<div id="data" class ="standTeams">
-                  <tr>
-                   <td>${i+1}</td>
-                   <td><img src="${res.response[0].league.standings[0][i].team.logo}" width="30" height="30"></td>
-                   <td>${res.response[0].league.standings[0][i].team.name}</td>
-                   <td>${res.response[0].league.standings[0][i].points}</td>
-                   <td>${res.response[0].league.standings[0][i].goalsDiff}</td>
-                   </tr>
-
-                  </div>`
-                          document.getElementById("table").innerHTML+=data1;
-
-                       }
-                    })
-            fetch("https://v3.football.api-sports.io/standings?league=61&season=2021",{
-               "method": "GET",
-               "headers": {
-                  "x-rapidapi-host": "v3.football.api-sports.io",
-                  "x-rapidapi-key": "40355cab67b3c292940c6a363c1f05db"
-               }
-            })
-                    .then(res => res.json())
-                    .then(res => {console.log(res.response[0].league.standings[0][1].team.logo)
-
-                       let data1=""
-                       let data3=""
-                       let data4=""
-                       let data5=""
-
-                       for(var i = 0; i < 20; i++){
-
-                          data1 = `<div id="data" class ="standTeams">
-                  <tr>
-                   <td>${i+1}</td>
-                   <td><img src="${res.response[0].league.standings[0][i].team.logo}" width="30" height="30"></td>
-                   <td>${res.response[0].league.standings[0][i].team.name}</td>
-                   <td>${res.response[0].league.standings[0][i].points}</td>
-                   <td>${res.response[0].league.standings[0][i].goalsDiff}</td>
-                   </tr>
-
-                  </div>`
-                          document.getElementById("table2").innerHTML+=data1;
-
-                       }
-                    })
-            fetch("https://v3.football.api-sports.io/standings?league=140&season=2021",{
-               "method": "GET",
-               "headers": {
-                  "x-rapidapi-host": "v3.football.api-sports.io",
-                  "x-rapidapi-key": "40355cab67b3c292940c6a363c1f05db"
-               }
-            })
-                    .then(res => res.json())
-                    .then(res => {console.log(res.response[0].league.standings[0][1].team.logo)
-
-                       let data1=""
-                       let data3=""
-                       let data4=""
-                       let data5=""
-
-                       for(var i = 0; i < 20; i++){
-
-                          data1 = `<div id="data" class ="standTeams">
-                  <tr>
-                   <td>${i+1}</td>
-                   <td><img src="${res.response[0].league.standings[0][i].team.logo}" width="30" height="30"></td>
-                   <td>${res.response[0].league.standings[0][i].team.name}</td>
-                   <td>${res.response[0].league.standings[0][i].points}</td>
-                   <td>${res.response[0].league.standings[0][i].goalsDiff}</td>
-                   </tr>
-
-                  </div>`
-                          document.getElementById("table3").innerHTML+=data1;
-
-                       }
-                    })
-            fetch("https://v3.football.api-sports.io/standings?league=88&season=2021",{
-               "method": "GET",
-               "headers": {
-                  "x-rapidapi-host": "v3.football.api-sports.io",
-                  "x-rapidapi-key": "40355cab67b3c292940c6a363c1f05db"
-               }
-            })
-                    .then(res => res.json())
-                    .then(res => {console.log(res.response[0].league.standings[0][1].team.logo)
-
-                       let data1=""
-                       let data3=""
-                       let data4=""
-                       let data5=""
-
-                       for(var i = 0; i < 20; i++){
-
-                          data1 = `<div id="data" class ="standTeams">
-                  <tr>
-                   <td>${i+1}</td>
-                   <td><img src="${res.response[0].league.standings[0][i].team.logo}" width="30" height="30"></td>
-                   <td>${res.response[0].league.standings[0][i].team.name}</td>
-                   <td>${res.response[0].league.standings[0][i].points}</td>
-                   <td>${res.response[0].league.standings[0][i].goalsDiff}</td>
-                   </tr>
-
-                  </div>`
-                          document.getElementById("table4").innerHTML+=data1;
-
-                       }
-                    })
-            fetch("https://v3.football.api-sports.io/standings?league=135&season=2021",{
-               "method": "GET",
-               "headers": {
-                  "x-rapidapi-host": "v3.football.api-sports.io",
-                  "x-rapidapi-key": "40355cab67b3c292940c6a363c1f05db"
-               }
-            })
-                    .then(res => res.json())
-                    .then(res => {console.log(res.response[0].league.standings[0][1].team.logo)
-
-                       let data1=""
-                       let data3=""
-                       let data4=""
-                       let data5=""
-
-                       for(var i = 0; i < 20; i++){
-
-                          data1 = `<div id="data" class ="standTeams">
-                  <tr>
-                   <td>${i+1}</td>
-                   <td><img src="${res.response[0].league.standings[0][i].team.logo}" width="30" height="30"></td>
-                   <td>${res.response[0].league.standings[0][i].team.name}</td>
-                   <td>${res.response[0].league.standings[0][i].points}</td>
-                   <td>${res.response[0].league.standings[0][i].goalsDiff}</td>
-                   </tr>
-
-                  </div>`
-                          document.getElementById("table5").innerHTML+=data1;
-
-                       }
-                    })
-         </script>
-
-
-
-
-         <style>
-            * {
-               font-family: sans-serif; /* Change your font family */
-            }
-
-            .content-table {
-               border-collapse: collapse;
-               margin: 25px 0;
-               font-size: 0.9em;
-               min-width: 200px;
-               border-radius: 5px 5px 0 0;
-               overflow: hidden;
-               box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-            }
-
-            .content-table thead tr {
-               background-color: black;
-               color: red;
-               text-align: left;
-               font-weight: bold;
-            }
-
-            .content-table th,
-            .content-table td {
-               padding: 10px 15px;
-            }
-
-            .content-table tbody tr {
-               border-bottom: 1px solid black;
-            }
-
-            .content-table tbody tr:nth-of-type(even) {
-               background-color: red;
-            }
-
-            .content-table tbody tr:last-of-type {
-               border-bottom: 2px solid	black;
-            }
-
-            .content-table tbody tr.active-row {
-               font-weight: bold;
-               color: 	red;
-            }
-
-
-         </style>
-         <style>
-
-
-            /* Please ❤ this if you like it! */
-
-
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-
-            *,
-            *::before,
-            *::after {
-               box-sizing: border-box;
-            }
-
-            .sec-center {
-               position: relative;
-               max-width: 100%;
-               /*text-align: center;*/
-               z-index: 200;
-            }
-            [type="checkbox"]:checked,
-            [type="checkbox"]:not(:checked){
-               position: absolute;
-               left: -9999px;
-               opacity: 0;
-               pointer-events: none;
-            }
-            .dark-light:checked + label,
-            .dark-light:not(:checked) + label{
-               position: fixed;
-               top: 40px;
-               right: 40px;
-               z-index: 20000;
-               display: block;
-               border-radius: 50%;
-               width: 46px;
-               height: 46px;
-               cursor: pointer;
-               transition: all 200ms linear;
-               box-shadow: 0 0 25px rgba(255,235,167,.45);
-            }
-            .dark-light:checked + label{
-               transform: rotate(360deg);
-            }
-            .dark-light:checked + label:after,
-            .dark-light:not(:checked) + label:after{
-               position: absolute;
-               content: '';
-               top: 1px;
-               left: 1px;
-               overflow: hidden;
-               z-index: 2;
-               display: block;
-               border-radius: 50%;
-               width: 44px;
-               height: 44px;
-               background-color: #102770;
-               background-image: url('https://assets.codepen.io/1462889/moon.svg');
-               background-size: 20px 20px;
-               background-repeat: no-repeat;
-               background-position: center;
-               transition: all 200ms linear;
-               opacity: 0;
-            }
-            .dark-light:checked + label:after {
-               opacity: 1;
-            }
-            .dark-light:checked + label:before,
-            .dark-light:not(:checked) + label:before{
-               position: absolute;
-               content: '';
-               top: 0;
-               left: 0;
-               overflow: hidden;
-               z-index: 1;
-               display: block;
-               border-radius: 50%;
-               width: 46px;
-               height: 46px;
-               background-color: red;
-               background-image: url('https://assets.codepen.io/1462889/sun.svg');
-               background-size: 25px 25px;
-               background-repeat: no-repeat;
-               background-position: center;
-               transition: all 200ms linear;
-            }
-            .dark-light:checked + label:before{
-               background-color: #000;
-            }
-            .light-back{
-               position: fixed;
-               top: 0;
-               left: 0;
-               z-index: 1;
-               background-color: #fff;
-               overflow: hidden;
-               background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
-               background-position: center;
-               background-repeat: repeat;
-               background-size: 4%;
-               height: 100%;
-               width: 100%;
-               transition: all 200ms linear;
-               opacity: 0;
-            }
-            .dark-light:checked ~ .light-back{
-               opacity: 1;
-            }
-            .dropdown:checked + label,
-            .dropdown:not(:checked) + label{
-               position: relative;
-               font-family: 'Roboto', sans-serif;
-               font-weight: 500;
-               font-size: 15px;
-               line-height: 2;
-               height: 50px;
-               transition: all 200ms linear;
-               border-radius: 10px;
-               width: 220px;
-               letter-spacing: 1px;
-               display: -webkit-inline-flex;
-               display: -ms-inline-flexbox;
-               display: inline-flex;
-               -webkit-align-items: center;
-               -moz-align-items: center;
-               -ms-align-items: center;
-               align-items: center;
-               -webkit-justify-content: center;
-               -moz-justify-content: center;
-               -ms-justify-content: center;
-               justify-content: center;
-               -ms-flex-pack: center;
-               text-align: center;
-               border: none;
-               background-color: red;
-               cursor: pointer;
-               color: black;
-               box-shadow: 0 12px 35px 0 rgba(255,235,167,.15);
-            }
-            .dark-light:checked ~ .sec-center .for-dropdown{
-               background-color: black;
-               color: red;
-               box-shadow: 0 12px 35px 0 rgba(16,39,112,.25);
-            }
-            .dropdown:checked + label:before,
-            .dropdown:not(:checked) + label:before{
-               position: fixed;
-               top: 0;
-               left: 0;
-               content: '';
-               width: 100%;
-               height: 100%;
-               z-index: -1;
-               cursor: auto;
-               pointer-events: none;
-            }
-            .dropdown:checked + label:before{
-               pointer-events: auto;
-            }
-            .dropdown:not(:checked) + label .uil {
-               font-size: 24px;
-               margin-left: 10px;
-               transition: transform 200ms linear;
-            }
-            .dropdown:checked + label .uil {
-               transform: rotate(180deg);
-               font-size: 24px;
-               margin-left: 10px;
-               transition: transform 200ms linear;
-            }
-            .section-dropdown {
-               position: absolute;
-               padding: 5px;
-               background-color: #111;
-               top: 70px;
-               left: 0;
-               width: 20%;
-               border-radius: 4px;
-               display: block;
-               box-shadow: 0 14px 35px 0 rgba(9,9,12,0.4);
-               z-index: 2;
-               opacity: 0;
-               pointer-events: none;
-               transform: translateY(20px);
-               transition: all 200ms linear;
-            }
-            .dark-light:checked ~ .sec-center .section-dropdown {
-               background-color: #fff;
-               box-shadow: 0 14px 35px 0 rgba(9,9,12,0.15);
-            }
-            .dropdown:checked ~ .section-dropdown{
-               opacity: 1;
-               pointer-events: auto;
-               transform: translateY(0);
-            }
-            .section-dropdown:before {
-               position: absolute;
-               top: -20px;
-               left: 0;
-               width: 100%;
-               height: 20px;
-               content: '';
-               display: block;
-               z-index: 1;
-            }
-            .section-dropdown:after {
-               position: absolute;
-               top: -7px;
-               left: 30px;
-               width: 0;
-               height: 0;
-               border-left: 8px solid transparent;
-               border-right: 8px solid transparent;
-               border-bottom: 8px solid #111;
-               content: '';
-               display: block;
-               z-index: 2;
-               transition: all 200ms linear;
-            }
-            .dark-light:checked ~ .sec-center .section-dropdown:after {
-               border-bottom: 8px solid #fff;
-            }
-
-            a {
-               position: relative;
-               color: #fff;
-               transition: all 200ms linear;
-               font-family: 'Roboto', sans-serif;
-               font-weight: 500;
-               font-size: 15px;
-               border-radius: 2px;
-               padding: 5px 0;
-               padding-left: 20px;
-               padding-right: 15px;
-               margin: 2px 0;
-               text-align: left;
-               text-decoration: none;
-               display: -ms-flexbox;
-               display: flex;
-               -webkit-align-items: center;
-               -moz-align-items: center;
-               -ms-align-items: center;
-               align-items: center;
-               justify-content: space-between;
-               -ms-flex-pack: distribute;
-            }
-            .dark-light:checked ~ .sec-center .section-dropdown a {
-               color: black;
-            }
-            a:hover {
-               color: black;
-               background-color: red;
-            }
-            .dark-light:checked ~ .sec-center .section-dropdown a:hover {
-               color: red;
-               background-color: black;
-            }
-            a .uil {
-               font-size: 22px;
-            }
-            .dropdown-sub:checked + label,
-            .dropdown-sub:not(:checked) + label{
-               position: relative;
-               color: #fff;
-               transition: all 200ms linear;
-               font-family: 'Roboto', sans-serif;
-               font-weight: 500;
-               font-size: 15px;
-               border-radius: 2px;
-               padding: 5px 0;
-               padding-left: 20px;
-               padding-right: 15px;
-               text-align: left;
-               text-decoration: none;
-               display: -ms-flexbox;
-               display: flex;
-               -webkit-align-items: center;
-               -moz-align-items: center;
-               -ms-align-items: center;
-               align-items: center;
-               justify-content: space-between;
-               -ms-flex-pack: distribute;
-               cursor: pointer;
-            }
-            .dropdown-sub:checked + label .uil,
-            .dropdown-sub:not(:checked) + label .uil{
-               font-size: 22px;
-            }
-            .dropdown-sub:not(:checked) + label .uil {
-               transition: transform 200ms linear;
-            }
-            .dropdown-sub:checked + label .uil {
-               transform: rotate(135deg);
-               transition: transform 200ms linear;
-            }
-            .dropdown-sub:checked + label:hover,
-            .dropdown-sub:not(:checked) + label:hover{
-               color: black;
-               background-color: red;
-            }
-            .dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub{
-               color: black;
-            }
-            .dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub:hover{
-               color: red;
-               background-color: black;
-            }
-
-            .section-dropdown-sub {
-               position: relative;
-               display: block;
-               width: 100%;
-               pointer-events: none;
-               opacity: 0;
-               max-height: 0;
-               padding-left: 10px;
-               padding-right: 3px;
-               overflow: hidden;
-               transition: all 200ms linear;
-            }
-            .dropdown-sub:checked ~ .section-dropdown-sub{
-               pointer-events: auto;
-               opacity: 1;
-               max-height: 999px;
-            }
-            .section-dropdown-sub a {
-               font-size: 14px;
-            }
-            .section-dropdown-sub a .uil {
-               font-size: 20px;
-            }
-
-
-            @media screen and (max-width: 991px) {
-               .logo {
-                  top: 30px;
-                  left: 20px;
-               }
-               .dark-light:checked + label,
-               .dark-light:not(:checked) + label{
-                  top: 20px;
-                  right: 20px;
-               }
-            }
-         </style>
    </body>
 </html>

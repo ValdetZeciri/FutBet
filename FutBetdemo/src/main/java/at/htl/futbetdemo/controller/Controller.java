@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -25,6 +26,9 @@ public class Controller {
 
     public Controller() throws SQLException, IOException, JSONException, ParseException, UnirestException {
         futModel = new FutBetModel();
+
+       // futModel.testMethod();
+
        // futModel.getDataFromApi();
     }
 
@@ -75,9 +79,76 @@ public class Controller {
             model.addAttribute("message2", "");
             return "loginPage";
         }
-
-
         return "about";
+    }
+
+    @PostMapping("/groups")
+        public String postGroups (HttpServletRequest request, Model model, @ModelAttribute Group group){
+            HttpSession session = request.getSession();
+            List<Group> list;
+
+            String message;
+            try {
+                User user = (User) session.getAttribute("user");
+                model.addAttribute("userName", user.getUserName());
+
+                message = futModel.checkForRightGroupName(group.getName());
+
+                model.addAttribute("group", new Group());
+                model.addAttribute("message", message);
+
+                int groupId = futModel.createGroup(group, futModel.getIdForUser(user));
+
+                futModel.addUserToGroup(futModel.getIdForUser(user), groupId);
+
+                list = futModel.getGroupsForUser(futModel.getIdForUser(user));
+                model.addAttribute("groups", list);
+
+            } catch (Exception e) {
+                return "loginPage";
+            }
+            return "groups";
+    }
+
+    @GetMapping("/groups")
+    public String getGroups(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        List<Group> list;
+        try {
+            User user = (User) session.getAttribute("user");
+            model.addAttribute("userName", user.getUserName());
+
+            list = futModel.getGroupsForUser(futModel.getIdForUser(user));
+            model.addAttribute("groups", list);
+
+            model.addAttribute("group", new Group());
+
+            model.addAttribute("message", "");
+
+
+        }catch (Exception e){
+            System.out.println(e.getStackTrace());
+            model.addAttribute("user", new User());
+            model.addAttribute("message1", "");
+            model.addAttribute("message2", "");
+            return "loginPage";
+        }
+        return "groups";
+    }
+    @GetMapping("/bettingHome")
+    public String getBettingHome(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        try {
+            User user = (User) session.getAttribute("user");
+            model.addAttribute("userName", user.getUserName());
+
+        }catch (Exception e){
+            model.addAttribute("user", new User());
+            model.addAttribute("message1", "");
+            model.addAttribute("message2", "");
+            return "loginPage";
+        }
+        return "betting";
     }
 
     @GetMapping("/contact.html")
@@ -127,6 +198,48 @@ public class Controller {
         }
 
         return "team";
+    }
+
+    @PostMapping("profile")
+    public String postprofile(Model model, HttpServletRequest request, @ModelAttribute User user) throws SQLException {
+        HttpSession session = request.getSession();
+
+        User sessionUser = (User) session.getAttribute("user");
+
+        user.setId(futModel.getIdForUser(sessionUser));
+
+        String message = futModel.updateUser(user);
+
+        sessionUser.setUserName(user.getUserName());
+        sessionUser.setEmailAdress(user.getEmailAdress());
+        sessionUser.setInfo(user.getInfo());
+
+        if (message == "successful"){
+            session.setAttribute("user", sessionUser);
+        }
+
+        model.addAttribute("message", message);
+        return "profile";
+    }
+
+    @GetMapping("profile")
+    public String profileCard(Model model, HttpServletRequest request){
+
+        HttpSession session = request.getSession();
+
+        try {
+            User user = (User) session.getAttribute("user");
+            model.addAttribute("userName", user.getUserName());
+            model.addAttribute("user", user);
+
+        }catch (Exception e){
+            model.addAttribute("user", new User());
+            model.addAttribute("message1", "");
+            model.addAttribute("message2", "");
+            return "loginPage";
+        }
+
+        return "profile";
     }
 
     @GetMapping("/login-page")

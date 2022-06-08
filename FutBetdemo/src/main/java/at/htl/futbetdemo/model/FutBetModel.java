@@ -79,13 +79,20 @@ public class FutBetModel {
 
     }
 
+    public String updateUser(User user) throws SQLException {
+        return database.updateUser(user);
+    }
+
+    public List<Group> getGroupsForUser(int id) throws SQLException {
+        return database.getGroupForUser(id);
+    }
 
 
     public void testMethod() throws IOException, ParseException, JSONException, UnirestException {
         
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/leagues/teams")
-                .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
+                .header("x-rapidapi-key", "87cc7f4e67ba3b53809562372a349d51")
                 .header("x-rapidapi-host", "v3.football.api-sports.io")
                 .asString();
 
@@ -97,6 +104,21 @@ public class FutBetModel {
 
             System.out.println(team.getString("name"));
 
+    }
+
+    public Leagues getLeagueForId(int id){
+        if (id == 39) {
+            return Leagues.PremierLeague;
+        }else if (id == 61){
+            return Leagues.Ligue1;
+        }else if (id == 78){
+            return Leagues.Bundesliga1;
+        }else if (id == 140){
+            return Leagues.LaLiga;
+        }else if (id == 135){
+            return Leagues.SerieA;
+        }
+        return null;
     }
 
     public HttpResponse<String> getLeague(Leagues league) throws UnirestException {
@@ -191,10 +213,29 @@ public class FutBetModel {
     public HttpResponse<String> makeApiConnectionWith2Paramenter(String type, String filter,String filter2, String value, int value2) throws UnirestException {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get("https://v3.football.api-sports.io/" +type +"?" + filter +"="+ value + "&" + filter2 + "=" + value2)
-                .header("x-rapidapi-key", "a2ae3e6da00f126e1e76332c2c1f25f5")
+                .header("x-rapidapi-key", "87cc7f4e67ba3b53809562372a349d51")
                 .header("x-rapidapi-host", "v3.football.api-sports.io")
                 .asString();
 
         return response;
+    }
+
+    public int getIdForUser(User user) throws SQLException {
+        return database.getIdForUser(user);
+    }
+
+    public String checkForRightGroupName(String name) {
+        if (name.length() > 15){
+            return "Gruppenname darf maximal 15 Zeichen haben";
+        }
+        return "";
+    }
+
+    public int createGroup(Group group, int creatorId) throws SQLException, UnirestException {
+        return database.createGroup(group, creatorId);
+    }
+
+    public void addUserToGroup(int userId, int groupId) throws SQLException {
+        database.addUserToGroup(userId, groupId);
     }
 }
