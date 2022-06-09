@@ -2,20 +2,58 @@
     File Name: all.js
 /****************************************** */
 
+
+
+// function startMainPage(){
+//     document.cookie='status=default';
+// }
+//
+// window.onload = function start(){
+//     window.alert('start');
+//    // document.getElementById('GroupNameP').innerHTML = cookie.read('groupName');
+//    // document.getElementById('LeagueP').innerHTML = cookie.read('compName');
+//    // document.getElementById('OwnerP').innerHTML = cookie.read('creatorName');
+//
+//     if (document.cookie != 'default'){
+//         if (document.cookie == 'see Users'){
+//             document.getElementById('formGroup').style.display='none';
+//
+//             document.getElementById('infoBox').style.display='none';
+//
+//             document.getElementById('userTab').style.display='block';
+//         }
+//     }
+// }
+
 function createGroup(){
     var formGroup = document.getElementById('formGroup');
 
     formGroup.style.display= 'block';
 
     document.getElementById('infoBox').style.display='none';
+    document.getElementById('userTab').style.display='none';
+
+}
+
+function saveUser(){
+    document.getElementById('dropDownForm').style.display = 'none';
+}
+
+function addUser(){
+    document.getElementById('dropDownForm').style.display = 'block';
 }
 
 function showGroup(index){
+
 
     document.getElementById('formGroup').style.display='none';
 
     document.getElementById('infoBox').style.display='block';
     var rows = document.getElementById('table').rows;
+    document.getElementById('seeUserButton').style.display='block';
+
+
+    index++;
     var row = rows[index];
 
     var cell1 = row.cells[0];
@@ -25,6 +63,16 @@ function showGroup(index){
     document.getElementById('GroupNameP').innerHTML = cell1.innerHTML;
     document.getElementById('LeagueP').innerHTML = cell2.innerHTML;
     document.getElementById('OwnerP').innerHTML = cell3.innerHTML;
+
+    document.getElementById('groupName').setAttribute('value', cell1.getElementsByTagName("p")[0].innerHTML);
+    document.getElementById('compName').setAttribute('value', cell2.getElementsByTagName("p")[0].innerHTML);
+    document.getElementById('creatorName').setAttribute('value', cell3.getElementsByTagName("p")[0].innerHTML);
+    document.getElementById('groupNameAdd').setAttribute('value', cell1.getElementsByTagName("p")[0].innerHTML);
+    document.getElementById('creatorNameAdd').setAttribute('value', cell3.getElementsByTagName("p")[0].innerHTML);
+
+    //cookie.write('groupName', cell1.getElementsByTagName("p")[0].innerHTML, '+1y');
+    //cookie.write('compName', cell2.getElementsByTagName("p")[0].innerHTML, '+1y');
+    //cookie.write('creatorName', cell3.getElementsByTagName("p")[0].innerHTML, '+1y');
 }
 
 function showFriend(index){
@@ -33,6 +81,7 @@ function showFriend(index){
 
     document.getElementById('friendsInfoBox').style.display='block';
     var rows = document.getElementById('friendsTable').rows;
+    index++;
     var row = rows[index];
 
     var cell1 = row.cells[0];
@@ -43,11 +92,12 @@ function showFriend(index){
 }
 
 function seeUsers(){
+
     document.getElementById('formGroup').style.display='none';
 
     document.getElementById('infoBox').style.display='none';
 
-    document.getElementById('userTab').style.display='none';
+    document.getElementById('userTab').style.display='block';
 }
 
 function findFriend(){

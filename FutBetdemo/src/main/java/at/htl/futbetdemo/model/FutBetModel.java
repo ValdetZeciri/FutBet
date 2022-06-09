@@ -250,4 +250,12 @@ public class FutBetModel {
     public void sendFriendRequest(int user, int friend) throws SQLException {
         database.sendFriendRequest(user, friend);
     }
+
+    public List<User> getUsersForGroup(Group group) throws SQLException {
+        return database.getUsersForGroup(group);
+    }
+
+    public int getIdForGroup(Group group) throws SQLException {
+        return database.getIdForGroup(group);
+    }
 }

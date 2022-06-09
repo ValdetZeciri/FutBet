@@ -195,16 +195,31 @@
                     </thead>
                     <tbody>
                     <tr th:each="group, itemStat : *{groups}" th:attr="onclick=|showGroup('__${itemStat.index}__')|">
-                        <td><p id="" th:text="*{groups[__${itemStat.index}__].name}"></p></td>
+                        <td><p th:text="*{groups[__${itemStat.index}__].name}"></p></td>
                         <td><p th:text="*{groups[__${itemStat.index}__].competitionName}"></p></td>
                         <td><p th:text="*{groups[__${itemStat.index}__].creatorName}"></p></td>
                     </tr>
                     </tbody>
                 </table>
-                <button style="width: 40%" id="createButton" th:onclick="createGroup()" class="groupButton">Create Group</button>
-                <button style="width: 40%" id="seeUser" th:onclick="seeUsers()" class="groupButton">See Users</button>
+                <button style="width: 17%" id="createButton" th:onclick="createGroup()" class="groupButton">Create Group</button>
 
-                <div id="userTab" class="groupForm">
+                <form method="POST" th:object="${group}" th:action="@{/getUsersForGroup}">
+                    <input id="groupName" type="hidden" th:field="*{name}">
+                    <input id="compName" type="hidden" th:field="*{competitionName}">
+                    <input id="creatorName" type="hidden" th:field="*{creatorName}">
+                    <button id="seeUserButton" style="width: 17%; display: none" th:onclick="seeUsers()" class="groupButton">See Users</button>
+                </form>
+
+                <p class="groupText" th:text="${message}"></p>
+
+                <div style="display: none" id="infoBox" class="infoBoxDiv">
+                    <label>Group Name:</label> <p id="GroupNameP" style="float: right"></p>
+                    <div style="clear: both; margin-top: -5px; margin-bottom: -5px"></div>
+                    <label>League:</label> <p id="LeagueP" style="float:right"></p>
+                    <div style="clear: both; margin-top: -5px; margin-bottom: -5px"></div>
+                    <label>Group Owner</label> <p id="OwnerP" style="float: right"></p>
+                </div>
+                <div id="userTab" class="userTableDiv">
                     <table class="userTable" id="userTable">
                         <thead>
                         <tr>
@@ -212,22 +227,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="group, itemStat : *{usersOfList}" th:attr="onclick=|showGroup('__${itemStat.index}__')|">
-                            <td><p th:text="*{usersOfList[__${itemStat.index}__].name}"></p></td>
+                        <tr th:each="group, itemStat : *{usersOfGroup}">
+                            <td><p th:text="*{usersOfGroup[__${itemStat.index}__].userName}"></p></td>
                         </tr>
                         </tbody>
                     </table>
+
+
+                    <button style="width: 55%" id="addUser" th:onclick="addUser()" class="groupButton">Add Friend</button>
+
+                    <form style="display: none" id="dropDownForm" th:object="${friend}" th:action="@{addUserToGroup}" method="POST">
+                        <select  id="compNameAdd" style="width:55%; margin-left: 5%; margin-top: 10px" class="dropDownFriends" type="text" th:field="*{userName}">
+                            <option th:if(element th:each="friend, itemStat : ${friends}" th:value="${friends[__${itemStat.index}__].userName}" th:text="${friends[__${itemStat.index}__].userName}"></option>
+                        </select>
+
+                        <button type="submit" style="width: 55%" id="saveUser" th:onclick="saveUser()" class="groupButton">Save</button>
+                    </form>
+
                 </div>
 
-                <p class="groupText" th:text="${message}"></p>
 
-                <div id="infoBox" class="groupForm">
-                    <label>Group Name:</label> <p id="GroupNameP" style="float: right"></p>
-                    <div style="clear: both;"></div>
-                    <label>League:</label> <p id="LeagueP" style="float:right"></p>
-                    <div style="clear: both;"></div>
-                    <label>Group Owner</label> <p id="OwnerP" style="float: right"></p>
-                </div>
+
+
+
 
                 <form id="formGroup" style="display: none" method="POST" th:object="${group}" th:action="@{/groups}" class="groupForm">
                     <input style="width: 100%" type="text" th:field="*{name}" placeholder="Group Name"/>

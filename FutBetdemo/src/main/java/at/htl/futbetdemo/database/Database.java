@@ -106,12 +106,15 @@ public class Database {
     public int createGroup(Group group, int creatorId) throws SQLException, UnirestException {
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO GROUP_(name, competitionid, creatorId) VALUES(?, ?, ?)"
+                "INSERT INTO GROUP_(name, competitionid, creatorId) SELECT ?, ?, ? FROM DUAL WHERE not exists(select * from group_ where name = ? AND competitionid = ? AND creatorId = ?)"
         );
 
         preparedStatement.setString(1, group.getName());
         preparedStatement.setInt(2, getCompIdForApiId(Integer.valueOf(group.getCompetitionName())));
         preparedStatement.setInt(3, creatorId);
+        preparedStatement.setString(4, group.getName());
+        preparedStatement.setInt(5, getCompIdForApiId(Integer.valueOf(group.getCompetitionName())));
+        preparedStatement.setInt(6, creatorId);
 
         preparedStatement.execute();
         preparedStatement.close();
@@ -380,5 +383,38 @@ public class Database {
 
         preparedStatement.execute();
         preparedStatement.close();
+    }
+
+    public List<User> getUsersForGroup(Group group) throws SQLException {
+        List<User> list = new ArrayList<>();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT name FROM USER_ WHERE id IN (SELECT userid FROM USER_GROUP WHERE groupId = ?)"
+        );
+
+        preparedStatement.setInt(1,group.getId());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()){
+            list.add(new User(resultSet.getString(1)));
+        }
+
+        return list;
+    }
+
+    public int getIdForGroup(Group group) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT id FROM GROUP_ WHERE name = ? AND creatorID = ?"
+        );
+
+        preparedStatement.setString(1, group.getName());
+        preparedStatement.setInt(2, group.getCreatorId());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getInt(1);
     }
 }
