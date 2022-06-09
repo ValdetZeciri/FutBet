@@ -103,6 +103,8 @@
                                           <li><a th:href="@{/news.html}">News</a></li>
                                           <!--<li><a th:href="@{blog.html}">Blog</a></li>-->
                                           <li><a th:href="@{/contact.html}">Contact</a></li>
+                                          <li><a th:href="@{bettingHome}">Betting Home</a></li>
+                                          <li><a th:href="@{groups}">Groups</a></li>
                                        </ul>
                                     </div>
                                     <!-- /.nav-collapse -->
@@ -141,7 +143,7 @@
                            <div class="rowy">
                               <div class="columny">
                                  <div class="cardy">
-                                    <img th:src="@{images/robert.png}" alt="Robert" style="width:100%">
+                                    <img th:src="@{images/robert.png}" height="350" alt="Robert" style="width:100%">
                                     <div class="containery">
                                        <p></p>
                                        <h2>Robert Nguyen</h2>
@@ -155,7 +157,7 @@
 
                               <div class="columny">
                                  <div class="cardy">
-                                    <img th:src="@{images/raphael.png}" alt="Raphael" style="width:100%">
+                                    <img th:src="@{images/raphael.png}" height="350" alt="Raphael" style="width:100%">
                                     <div class="containery">
                                        <p></p>
                                        <h2>Raphael Stangl</h2>
@@ -169,7 +171,7 @@
 
                               <div class="columny">
                                  <div class="cardy">
-                                    <img th:src="@{images/valdet.png}" alt="Valdet" style="width:100%">
+                                    <img th:src="@{images/valdet.png}" height="350px" alt="Valdet" style="width:100%">
                                     <div class="containery">
                                        <p></p>
                                        <h2>Valdet Zeciri</h2>
@@ -183,7 +185,7 @@
 
                               <div class="columny">
                                  <div class="cardy">
-                                    <img th:src="@{images/vanja.png}" alt="Vanja" style="width:100%">
+                                    <img th:src="@{images/vanja.png}" height="350" alt="Vanja" style="width:100%">
                                     <div class="containery">
                                        <p></p>
                                        <h2>Vanja Visekruna</h2>
@@ -231,12 +233,15 @@
                      <div class="footer-widget">
                         <h3>Menu</h3>
                         <ul class="footer-menu">
+                           <li><a th:href="@{/main}">Home</a></li>
                            <li><a th:href="@{about.html}">About Us</a></li>
                            <!--<li><a th:href="@{team.html}">Our Team</a></li>-->
                            <li><a th:href="@{news.html}">Latest News</a></li>
                            <!--<li><a th:href="@{matche.html}">Recent Matchs</a></li>-->
                            <li><a th:href="@{contact.html}">Contact Us</a></li>
-                           <!--<li><a th:text="${userName}" th:href="@{profile}"></a></li>-->
+                           <li><a th:text="${userName}" th:href="@{profile}"></a></li>
+                           <li><a th:href="@{bettingHome}">Betting Home</a></li>
+                           <li><a th:href="@{groups}">Groups</a></li>
                            <li><a th:href="@{logOut}">Log Out</a></li>
                         </ul>
                      </div>
@@ -279,13 +284,13 @@
          float: left;
          width: 25%;
          margin-bottom: 16px;
-         padding: 0 8px;
+         padding: 0 5px;
       }
 
       /* Display the columns below each other instead of side by side on small screens */
       @media screen and (max-width: 650px) {
          .column {
-            width: 100%;
+            width: 10%;
             display: block;
          }
       }

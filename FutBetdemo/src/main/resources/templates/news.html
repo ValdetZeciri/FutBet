@@ -102,6 +102,9 @@
                                           <li><a th:href="@{/about.html}">About</a></li>
                                           <!--<li><a th:href="@{team.html}">Team</a></li>-->
                                           <li><a th:href="@{/news.html}">News</a></li>
+                                          <li><a th:href="@{/contact.html}">Contact</a></li>
+                                          <li><a th:href="@{bettingHome}">Betting Home</a></li>
+                                          <li><a th:href="@{groups}">Groups</a></li>
 <!--                                          <li class="dropdown mega-dropdown">-->
 <!--                                             <a th:href="@{match}" class="dropdown-toggle" data-toggle="dropdown">Match<span class="caret"></span></a>-->
 <!--                                             <ul class="dropdown-menu mega-dropdown-menu">-->
@@ -153,7 +156,6 @@
 <!--                                             </ul>-->
 <!--                                          </li>-->
                                           <!--<li><a th:href="@{blog.html}">Blog</a></li>-->
-                                          <li><a th:href="@{/contact.html}">Contact</a></li>
                                        </ul>
                                     </div>
                                     <!-- /.nav-collapse -->
@@ -194,7 +196,7 @@
       <br>
       <br>
 
-      <h1 style="color:#ab0000"> Latest News Football World</h1>
+      <h1 style="color: white"> Latest News Football World</h1>
 
       <div id ="news1" class="row">
      </div>
@@ -224,12 +226,15 @@
                      <div class="footer-widget">
                         <h3>Menu</h3>
                         <ul class="footer-menu">
+                           <li><a th:href="@{/main}">Home</a></li>
                            <li><a th:href="@{about.html}">About Us</a></li>
                            <!--<li><a th:href="@{team.html}">Our Team</a></li>-->
                            <li><a th:href="@{news.html}">Latest News</a></li>
                            <!--<li><a th:href="@{matche.html}">Recent Matchs</a></li>-->
                            <li><a th:href="@{contact.html}">Contact Us</a></li>
                            <li><a th:text="${userName}" th:href="@{profile}"></a></li>
+                           <li><a th:href="@{bettingHome}">Betting Home</a></li>
+                           <li><a th:href="@{groups}">Groups</a></li>
                            <li><a th:href="@{logOut}">Log Out</a></li>
                         </ul>
                      </div>
@@ -308,17 +313,59 @@
 
             if(res.topStories[i].categoryLabel == "Football"){
 
-                     data1+=`<div id = "news1"class="row">
-                              <div class="container">
-                              <div class="col-md-3 column">
-                                 <div class="card">
-                                 <img class="img-responsive" src="${res.topStories[i].mainMedia.thumbnail.url}" style="width:100%">
-                                    <h4 style="color:black">${res.topStories[i].title}</h4>
-                                    <div class="center"><button onclick="window.location.href = '${res.topStories[i].url}'';"class="button">Read More</button></div>
-                              </div>
-                           </div>`
-                        }
-   
+                     console.log(res);
+                     // data1+=`<div id = "news1"class="row">
+                     //          <div class="container">
+                     //          <div class="col-md-3 column">
+                     //             <div class="card">
+                     //             <img class="img-responsive" src="${res.topStories[i].mainMedia.thumbnail.url}" style="width:100%">
+                     //                <h4 style="color:white">${res.topStories[i].title}</h4>
+                     //                <div class="center"><button style="color:white" onclick="window.location.href = '${res.topStories[i].url}'';"class="button">Read More</button></div>
+                     //          </div>
+                     //       </div>`
+                     //    }
+                     // data1 += `<div id="news1" class="contentBox" style="size: 30px">
+                     //        <h4 style="color:red">${res.topStories[i].title}</h4>
+                     //        <div class="card">
+                     //                <img class="img-responsive" src="${res.topStories[i].mainMedia.thumbnail.url}" style="width:100%">
+                     //                <div class="center"><button style="color:white" onclick="window.location.href = '${res.topStories[i].url}'';"class="button">Read More</button>
+                     //          </div>
+                     //        </div>
+                     //        </div>`
+                     // data1+=`<table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100% background-color:#E5E5E5; border:1px solid #CCCCCC;">
+                     //        <tr>
+                     //            <td valign="top" style="padding-top:20px; padding-right:20px; padding-left:20px;">
+                     //                <table align="left" border="0" cellpadding="0" cellspacing="0" width="200">
+                     //                    <tr>
+                     //                        <td align="center" valign="top" style="padding-bottom:20px;">
+                     //                            <img src="${res.topStories[i].mainMedia.thumbnail.url}" style="width: 100%" />
+                     //                        </td>
+                     //                    </tr>
+                     //                </table>
+                     //                <table align="right" border="0" cellpadding="0" cellspacing="0" width="300">
+                     //                    <tr>
+                     //                        <td valign="top" style="color:#404040; font-family:Helvetica; font-size:16px; line-height:100%; text-align:left; padding-bottom:20px;">
+                     //                            <h3>${res.topStories[i].title}</h3>
+                     //                            <br />
+                     //                            ${res.topStories[i].subtitle}
+                     //                        </td>
+                     //                    </tr>
+                     //                </table>
+                     //            </td>
+                     //        </tr>
+                     //    </table>`
+                     data1+=`<div class="columny">
+                                 <div class="cardy">
+                                    <img src="${res.topStories[i].mainMedia.thumbnail.url}" alt="Raphael" style="width:100%">
+                                    <div class="containery">
+                                       <p></p>
+                                       <h2 style="position: center; color: red">News</h2>
+                                       <p>${res.topStories[i].title}</p>
+                                       <p><button class="buttony">Read More</button></p>
+                                    </div>
+                                 </div>
+                              </div>`
+         }
          }
       
          document.getElementById("news1").innerHTML=data1;
@@ -383,6 +430,60 @@
          font-size: 1.2rem;
          color: white;
          background-image: linear-gradient(to right, #cc0000 0%, #ab0000 100%);
+      }
+
+      .columny {
+         float: left;
+         width: 25%;
+         margin-bottom: 16px;
+         padding: 0 5px;
+         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      /* Display the columns below each other instead of side by side on small screens */
+      @media screen and (max-width: 650px) {
+         .column {
+            width: 10%;
+            display: block;
+         }
+      }
+
+      /* Add some shadows to create a card effect */
+      .cardy {
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+         background-color: white;
+      }
+
+      /* Some left and right padding inside the container */
+      .containery {
+         padding: 0 16px;
+      }
+
+      /* Clear floats */
+      .containery::after, .row::after {
+         content: "";
+         clear: both;
+         display: table;
+      }
+
+      .titley {
+         color: grey;
+      }
+
+      .buttony {
+         border: none;
+         outline: 0;
+         display: inline-block;
+         padding: 8px;
+         color: white;
+         background-color: #000;
+         text-align: center;
+         cursor: pointer;
+         width: 100%;
+      }
+
+      .buttony:hover {
+         background-color: #555;
       }
 
    </style>

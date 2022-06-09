@@ -98,6 +98,8 @@
                                           <li><a th:href="@{about.html}">About</a></li>
                                           <li><a th:href="@{news.html}">News</a></li>
                                           <li><a th:href="@{contact.html}">Contact</a></li>
+                                          <li><a th:href="@{bettingHome}">Betting Home</a></li>
+                                          <li><a th:href="@{groups}">Groups</a></li>
                                        </ul>
                                     </div>
                                     <!-- /.nav-collapse -->
@@ -211,13 +213,15 @@
                      <div class="footer-widget">
                         <h3>Menu</h3>
                         <ul class="footer-menu">
+                           <li><a th:href="@{/main}">Home</a></li>
                            <li><a th:href="@{about.html}">About Us</a></li>
                            <!--<li><a th:href="@{team.html}">Our Team</a></li>-->
                            <li><a th:href="@{news.html}">Latest News</a></li>
                            <!--<li><a th:href="@{matche.html}">Recent Matchs</a></li>-->
                            <li><a th:href="@{contact.html}">Contact Us</a></li>
-
                            <li><a th:text="${userName}" th:href="@{profile}"></a></li>
+                           <li><a th:href="@{bettingHome}">Betting Home</a></li>
+                           <li><a th:href="@{groups}">Groups</a></li>
                            <li><a th:href="@{logOut}">Log Out</a></li>
                         </ul>
                      </div>
