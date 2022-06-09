@@ -233,12 +233,13 @@
                      <div class="footer-widget">
                         <h3>Menu</h3>
                         <ul class="footer-menu">
+                           <li><a th:href="@{/main}">Home</a></li>
                            <li><a th:href="@{about.html}">About Us</a></li>
                            <!--<li><a th:href="@{team.html}">Our Team</a></li>-->
                            <li><a th:href="@{news.html}">Latest News</a></li>
                            <!--<li><a th:href="@{matche.html}">Recent Matchs</a></li>-->
                            <li><a th:href="@{contact.html}">Contact Us</a></li>
-                           <!--<li><a th:text="${userName}" th:href="@{profile}"></a></li>-->
+                           <li><a th:text="${userName}" th:href="@{profile}"></a></li>
                            <li><a th:href="@{bettingHome}">Betting Home</a></li>
                            <li><a th:href="@{groups}">Groups</a></li>
                            <li><a th:href="@{logOut}">Log Out</a></li>
@@ -283,13 +284,13 @@
          float: left;
          width: 25%;
          margin-bottom: 16px;
-         padding: 0 8px;
+         padding: 0 5px;
       }
 
       /* Display the columns below each other instead of side by side on small screens */
       @media screen and (max-width: 650px) {
          .column {
-            width: 100%;
+            width: 10%;
             display: block;
          }
       }
