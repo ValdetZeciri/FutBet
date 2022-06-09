@@ -417,4 +417,18 @@ public class Database {
 
         return resultSet.getInt(1);
     }
+
+    public void addFriends(User user, User friend) throws SQLException {
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "Insert INTO Friends(userid1, userid2) Values (?,?)"
+        );
+
+        preparedStatement.setInt(1,user.getId());
+        preparedStatement.setInt(2, friend.getId());
+
+        preparedStatement.execute();
+
+        preparedStatement.close();
+    }
 }

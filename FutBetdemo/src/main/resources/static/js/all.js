@@ -24,6 +24,27 @@
 //         }
 //     }
 // }
+function showGroupBet(index){
+
+    var rows = document.getElementById('table').rows;
+    document.getElementById('showGroupBet').style.display='block';
+
+
+    index++;
+    var row = rows[index];
+
+    var cell1 = row.cells[0];
+    var cell2 = row.cells[1];
+    var cell3 = row.cells[2];
+
+    document.getElementById('groupName').setAttribute('value', cell1.getElementsByTagName("p")[0].innerHTML);
+    document.getElementById('compName').setAttribute('value', cell2.getElementsByTagName("p")[0].innerHTML);
+    document.getElementById('creatorName').setAttribute('value', cell3.getElementsByTagName("p")[0].innerHTML);
+}
+
+function showMessages(){
+
+}
 
 function createGroup(){
     var formGroup = document.getElementById('formGroup');

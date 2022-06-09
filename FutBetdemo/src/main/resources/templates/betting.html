@@ -1,10 +1,322 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Site Metas -->
+<title>Game Info</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Site Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link rel="shortcut icon" type="image/x-icon" />
+<link rel="apple-touch-icon" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="bootstrap.min.css"/>
+<!-- Site CSS -->
+<link rel="stylesheet" href="style.css"/>
+<!-- Colors CSS -->
+<link rel="stylesheet" href="colors.css"/>
+<!-- ALL VERSION CSS -->
+<link rel="stylesheet" href="versions.css"/>
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="responsive.css"/>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="custom.css"/>
+<!-- font family-->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- end font family -->
+<link rel="stylesheet" href="3dslider.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"/>
+<script src="js/3dslider.js"></script>
+<script async src="/cdn-cgi/bm/cv/669835187/api.j"></script></head>
+<body class="game_info" data-spy="scroll" data-target=".header">
+<!-- LOADER -->
+<div id="preloader">
+    <img class="preloader" src="images/loading-img.gif" alt="">
+</div>
+<!-- END LOADER -->
+<section id="top">
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="full">
+                            <div class="logo">
+                                <a href="/main"><img src="images/logo.png" alt="#" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="right_top_section">
+                            <!-- social icon -->
+                            <ul class="social-icons pull-left">
+                                <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="youtube" href="https://www.youtube.com/channel/UCOn6aIFUnpqzvh3hPid84xQ"><i class="fa fa-youtube-play"></i></a></li>
+                                <li><a class="instagram" href="https://instagram.com"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                            <!-- end social icon -->
+                            <!-- button section -->
+                            <ul class="login">
+                                <li class="login-modal">
+                                    <a th:href="@{profile}" class="login"><i class="fa fa-user"></i><div class="userName" th:text="${userName}"></div></a>
+                                </li>
+                                <li>
+                                    <div class="cart-option">
+                                        <a href="logOut"></i>Log Out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- end button section -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full">
+                            <div class="main-menu-section">
+                                <div class="menu">
+                                    <nav class="navbar navbar-inverse">
+                                        <div class="navbar-header">
+                                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                            <a class="navbar-brand" href="#">Menu</a>
+                                        </div>
+                                        <div class="collapse navbar-collapse js-navbar-collapse">
+                                            <ul class="nav navbar-nav">
+                                                <!-- <li class="active"><a th:href="@{index.html}">Home</a></li> -->
+                                                <li class="active"><a href="/">Home</a></li>
+                                                <li><a href="about.html">About</a></li>
+                                                <!--<li><a th:href="@{team.html}">Team</a></li>-->
+                                                <li><a href="news.html">News</a></li>
+                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="bettingHome">Betting Home</a></li>
+                                                <li><a href="groups">Groups</a></li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                    <div class="search-bar">
+                                        <div id="imaginary_container">
+                                            <div class="input-group stylish-input-group">
+                                                <input type="text" class="form-control"  placeholder="Search" >
+                                                <span class="input-group-addon">
+                                          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                          </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="headerBlock">
+    </div>
+    <div class="contentBlock">
+        <div class="contentElementLeft">
+            <div class="contentBoxLeft">
+                <h1><span class="color-red">TOP Ranking</span></h1>
+                <table class="table2" >
+                    <tr>
+                        <th>Players</th>
+                        <th>Points</th>
+                    </tr>
+
+                    <tbody>
+                    <tr th:each="group, itemStat : *{users}">
+                        <td><p th:text="*{users[__${itemStat.index}__].userName}"></p></td>
+                        <td><p>0</p></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+            <div class="contentElementBetGames">
+                <div class="contentBoxBetGames">
+                    <h1><span class="color-red">Games</span></h1>
+                    <table class="table2" id="tableGames">
+                        <tr>
+                            <th>Date</th>
+                            <th>Home Team</th>
+                            <th>Away Team</th>
+                            <th>Pick Winner</th>
+                        </tr>
+
+
+                    </table>
+                    <br>
+                    <br>
+
+                    <button style="width: 40%; margin-left: 30%" id="createButton" class="groupButton">Send</button>
+                </div>
+            </div>
+
+
+            <div class="contentElementRight">
+                <div class="contentBoxRight">
+                    <h1><span class="color-red">Groups</span></h1>
+                    <table id="table" class="table2" >
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>League</th>
+                            <th>Group Creator</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="group, itemStat : *{groups}" th:attr="onclick=|showGroupBet('__${itemStat.index}__')|">
+                                <td><p th:text="*{groups[__${itemStat.index}__].name}"></p></td>
+                                <td><p th:text="*{groups[__${itemStat.index}__].competitionName}"></p></td>
+                                <td><p th:text="*{groups[__${itemStat.index}__].creatorName}"></p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form th:object="${group}" th:action="@{/showGroupBet}" method="POST">
+                        <input id="groupName" type="hidden" th:field="*{name}">
+                        <input id="compName" type="hidden" th:field="*{competitionName}">
+                        <input id="creatorName" type="hidden" th:field="*{creatorName}">
+                        <input id="showGroupBet" style="display: none; margin-top: 10px; position: center" type="submit" value="Show" class="groupButton">
+                    </form>
+                    <div style="bottom: 30px; position: absolute">
+                        <h1><span class="color-red">How it works</span></h1>
+                        <p>To start betting you have to select a Group you want to bet for. Afterwards there will be couple of matches to bet for. After the match has finished the Winner you will get 3 or 0 points depending on how the match finished.</p>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+
+
+                <footer id="footer" class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="full">
+                                    <div class="footer-widget">
+                                        <div class="footer-logo">
+                                            <a href="#"><img src="images/footer-logo.png" alt="#" /></a>
+                                        </div>
+                                        <p></p>
+                                        <ul class="social-icons style-4 pull-left">
+                                            <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="youtube" href="https://www.youtube.com/channel/UCOn6aIFUnpqzvh3hPid84xQ"><i class="fa fa-youtube-play"></i></a></li>
+                                            <li><a class="instagram" href="https://instagram.com"><i class="fa fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="full">
+                                    <div class="footer-widget">
+                                        <h3>Menu</h3>
+                                        <ul class="footer-menu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <!--<li><a th:href="@{team.html}">Our Team</a></li>-->
+                                            <li><a href="news.html">Latest News</a></li>
+                                            <!--<li><a th:href="@{matche.html}">Recent Matchs</a></li>-->
+                                            <li><a href="contact.html">Contact Us</a></li>
+                                            <li><a href="profile"></a></li>
+                                            <li><a href="logOut">Log Out</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="full">
+                                    <div class="footer-widget">
+                                        <h3>Contact us</h3>
+                                        <ul class="address-list">
+                                            <li><i class="fa fa-map-marker"></i>HTBLA Leonding</li>
+                                            <li><i class="fa fa-phone"></i>...</li>
+                                            <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> FutBet7@gmail.com</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="full">
+                                    <div class="contact-footer">
+                                        <iframe src="https://maps.google.com/maps?q=Leonding%20HTL&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+
+                    </div>
+                </footer>
+                <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+                <!-- ALL JS FILES -->
+                <script src="js/all.js"></script>
+                <!-- ALL PLUGINS -->
+                <script src="js/custom.js"></script>
+                <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db496f3183478a6',m:'HJt5zihXS3PPU6cuWApuHRVM6.HUsTZkwXxiGtmF6Ck-1644488266-0-AZ8vnRyt9/8iJUYyA2fvZ9MvNUiWRZMkrohDhb0MM5jiM676FOdid1AXcczrCY/7G9oBBb/c4AxqykQC4RG0aw5f2J7zzWV3caXTUDc+An+kJMxS2uho3tKWkMjJD/cNW70YjolA/2PE+XG/8hgHWzKIZgWepLl0O4q3x2IuZvmnotRbrwfm5YVztrGihLa0jQ==',s:[0x8c01129900,0x91a1c4c083],}})();</script>
 </body>
+
+<script>
+    fetch("https://v3.football.api-sports.io/fixtures?live=all", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "v3.football.api-sports.io",
+            "x-rapidapi-key": "40355cab67b3c292940c6a363c1f05db"
+        }
+    })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res.response[0])
+            let data2=""
+
+            for(var i = 0; i < res.response.length;i++){
+
+                data2+=`<tr>
+
+                             <td>${res.response[i].fixture.date}</td>
+                             <td>${res.response[i].teams.home.name}</td>
+                             <td>${res.response[i].teams.away.name}</td>
+                            <td><label class="container">${res.response[i].teams.home.name}
+                                <input type="checkbox" >
+                                <span class="checkmark"></span>
+                                </label>
+                                <label class="container">${res.response[i].teams.away.name}
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                             </td>
+                            </tr>`
+
+
+
+            }
+            document.getElementById("tableGames").innerHTML+=data2;
+
+
+        });
+</script>
+
 </html>

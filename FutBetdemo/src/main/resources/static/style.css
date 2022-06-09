@@ -156,6 +156,7 @@ table {
 	margin-left: 0%;
 	min-height:110px;
 	height: available;
+	overflow-x: hidden;
 }
 
 
@@ -186,6 +187,15 @@ table {
 	transition: 0.3s;
 }
 
+.messageBox{
+	width: 150px;
+	height: 80px;
+	border-radius: 10px;
+	border: #999999;
+	align-content: normal;
+	position: absolute;
+}
+
 .groupButton:hover{
 	color: #000000;
 	background-color: #f6eeee;
@@ -207,6 +217,42 @@ table {
 	height: 120px;
 	width: 40%;
 	margin-top: 5%;
+}
+.table2 {
+	margin-left:10%;
+	overflow-y:scroll;
+	overflow-y: auto;
+	max-height:600px;
+	max-width: 80%;
+	width: 80%;
+	float: left;
+	position: relative;
+	height: auto;
+	display: inline-block;
+	overflow-x: hidden;
+}
+.contentElementBetGames{
+	margin-top: 50px;
+	display: table-cell;
+	display: block;
+	float:left;
+	min-width: 650px;
+	width: 50%;
+	display:inline-block;
+}
+.contentBoxBetGames {
+	float: left;
+	box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+	min-height: 700px;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	position: relative;
+	margin-left: 10%;
+	min-width: 500px;
+	width: 80%;
+	align-content: center;
+	display:inline-block;
+
 }
 
 .userTableDiv {
@@ -294,8 +340,29 @@ td.text-right {
 	float:left;
 	min-width: 650px;
 	width: 50%;
+	min-width: 500px;
+
 
 }
+.contentElementLeft {
+	margin-top: 50px;
+	display: table-cell;
+	display: block;
+	float:left;
+	min-width: 250px;
+	width: 20%;
+
+}
+
+.contentElementRight {
+	margin-top: 50px;
+	display: table-cell;
+	display: block;
+	float:left;
+	min-width: 150px;
+	width: 30%;
+}
+
 
 .contentBox {
 	box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
@@ -304,9 +371,36 @@ td.text-right {
 	background-color: #FFFFFF;
 	position: relative;
 	margin-left: 10%;
-	min-width: 500px;
+	min-width: 100px;
 	width: 80%;
 	align-content: center;
+
+}
+
+.contentBoxLeft {
+	float: left;
+	box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+	min-height: 700px;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	position: relative;
+	margin-left: 10%;
+	width: 80%;
+	align-content: center;
+	display:inline-block;
+
+}
+.contentBoxRight {
+	float: left;
+	box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+	min-height: 700px;
+	border-radius: 20px;
+	background-color: #FFFFFF;
+	position: relative;
+	margin-left: 10%;
+	width: 80%;
+	align-content: center;
+	display:inline-block;
 
 }
 

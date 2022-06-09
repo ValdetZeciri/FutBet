@@ -258,4 +258,8 @@ public class FutBetModel {
     public int getIdForGroup(Group group) throws SQLException {
         return database.getIdForGroup(group);
     }
+
+    public void addFriend(User user, User friend) throws SQLException {
+        database.addFriends(user, friend);
+    }
 }
