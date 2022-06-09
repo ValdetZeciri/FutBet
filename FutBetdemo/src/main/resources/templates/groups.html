@@ -134,8 +134,53 @@
         <div class="contentElement">
             <div class="contentBox">
                 <h1><span class="color-red">Friends</span></h1>
+
+                <table id="friendsTable">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="friend, itemStat : *{friends}" th:attr="onclick=|showFriend('__${itemStat.index}__')|">
+                        <td><p th:text="*{friends[__${itemStat.index}__].userName}"></p></td>
+                        <td><p th:text="*{friends[__${itemStat.index}__].emailAdress}"></p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button style="width: 40%" id="friendsButton" th:onclick="findFriend()" class="groupButton">Find Friends</button>
+                <div th:if="${#lists.isEmpty(searchedFriends)}" id="friendsInfoBox" class="groupForm">
+                    <label>User Name:</label> <p id="userName" style="float: right"></p>
+                    <div style="clear: both;"></div>
+                    <label>E-Mail:</label> <p id="eMail" style="float:right"></p>
+                </div>
+
+
+                <form id="friendForm" style="display: none" method="POST" th:object="${friend}" th:action="@{/friend}" class="friendForm1">
+                    <input style="width: 100%" type="text" th:field="*{userName}" placeholder="Search For Friends . . ."/>
+                    <input type="submit" style=" margin-left: 0px; display: inline-block; float: left; margin-top: 3px; width: auto; padding: 0px 2px 0px 2px" id="searchButton" th:onclick="searchFriend()" class="groupButton" value="Search"/>
+                </form>
+
+
+
+                <form class="friendForm2" id="friendsSubmit" th:if="${not #lists.isEmpty(searchedFriends)}" method="POST" th:object="${friend}" th:action="@{/sendRequest}">
+                    <p><span class="color-red">Found Users: </span></p>
+
+                    <select class="dropDownFriends" type="text" th:field="*{userName}">
+                        <option th:each="group, itemStat : ${searchedFriends}" th:value="${searchedFriends[__${itemStat.index}__].userName}" th:text="${searchedFriends[__${itemStat.index}__].userName}"></option>
+
+                        <option value="cancel">Vorgang Abbrechen</option>
+                    </select>
+
+                    <input id="friendsInput"  style="margin-left: 0%; margin-top:3px; display: inline-block; width: auto;  padding: 0px 2px 0px 2px" class="groupButton" type="submit" value="Send Friend Request">
+                </form>
+
             </div>
         </div>
+
+
+
         <div class="contentElement">
             <div class="contentBox">
                 <h1><span class="color-red">Groups</span></h1>
@@ -149,14 +194,31 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:onclick="showGroup(itemStat.index)" th:each="group, itemStat : *{groups}">
-                        <td><p th:text="*{groups[__${itemStat.index}__].name}"></p></td>
+                    <tr th:each="group, itemStat : *{groups}" th:attr="onclick=|showGroup('__${itemStat.index}__')|">
+                        <td><p id="" th:text="*{groups[__${itemStat.index}__].name}"></p></td>
                         <td><p th:text="*{groups[__${itemStat.index}__].competitionName}"></p></td>
                         <td><p th:text="*{groups[__${itemStat.index}__].creatorName}"></p></td>
                     </tr>
                     </tbody>
                 </table>
                 <button style="width: 40%" id="createButton" th:onclick="createGroup()" class="groupButton">Create Group</button>
+                <button style="width: 40%" id="seeUser" th:onclick="seeUsers()" class="groupButton">See Users</button>
+
+                <div id="userTab" class="groupForm">
+                    <table class="userTable" id="userTable">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="group, itemStat : *{usersOfList}" th:attr="onclick=|showGroup('__${itemStat.index}__')|">
+                            <td><p th:text="*{usersOfList[__${itemStat.index}__].name}"></p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <p class="groupText" th:text="${message}"></p>
 
                 <div id="infoBox" class="groupForm">

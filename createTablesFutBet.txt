@@ -35,6 +35,15 @@ CREATE TABLE TEAM(
     PRIMARY KEY (teamId)
 );
 
+CREATE TABLE FRIENDS (
+    userId1 Number,
+    userId2 Number,
+    Primary Key(userId1, userId2),
+    FoREIGN KEY (userId1) REFERENCES USER_(id),
+    FoREIGN KEY (userId2) REFERENCES USER_(id)
+);
+    
+
 CREATE TABLE COMPETITION_TEAM(
     compId NUMBER,
     teamId NUMBER,

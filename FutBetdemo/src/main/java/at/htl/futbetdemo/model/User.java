@@ -14,10 +14,18 @@ public class User {
     public User(){
 
     }
+    public  User(String userName){
+        this.userName = userName;
+    }
 
     public User(String userName, String password, String emailAdress){
         this.userName = userName;
         this.password = password;
+        this.emailAdress = emailAdress;
+    }
+
+    public User(String userName, String emailAdress){
+        this.userName = userName;
         this.emailAdress = emailAdress;
     }
 

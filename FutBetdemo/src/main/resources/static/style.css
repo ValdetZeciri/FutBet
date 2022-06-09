@@ -151,6 +151,10 @@ table {
 	display: inline-block;
 }
 
+userTable {
+
+}
+
 .dropdownInput {
 	position: relative;
 	float: right;
@@ -158,6 +162,11 @@ table {
 	margin-top: 5%
 }
 
+.dropDownFriends{
+	position: relative;
+	float: left;
+	width: 100%;
+}
 
 
 .groupButton {
@@ -186,6 +195,26 @@ table {
 	width: 40%;
 	margin-top: 5%;
 }
+
+.friendForm1 {
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	height: 70px;
+	width: 40%;
+	margin-top: 5%;
+}
+
+.friendForm2 {
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	height: 150px;
+	min-height: 100px;
+	width: 40%;
+	margin-top: 5%;
+}
+
 
 td {
 	background:#FFFFFF;

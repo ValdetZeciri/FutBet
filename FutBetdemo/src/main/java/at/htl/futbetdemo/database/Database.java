@@ -274,11 +274,10 @@ public class Database {
     public int getIdForUser(User user) throws SQLException {
 
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "SELECT id FROM USER_ WHERE name = ? AND emailadress = ?"
+                "SELECT id FROM USER_ WHERE name = ?"
         );
 
         preparedStatement.setString(1, user.getUserName());
-        preparedStatement.setString(2, user.getEmailAdress());
 
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();
@@ -308,5 +307,78 @@ public class Database {
         resultSet.close();
 
         return groupList;
+    }
+
+    public List<User> getFriendsForUsr(int id) throws SQLException {
+        List<User> friendList = new ArrayList<>();
+
+        PreparedStatement preparedStatement2 = connection.prepareStatement(
+                "SELECT name, emailAdress FROM USER_ WHERE id IN(SELECT userId2 FROM FRIENDS WHERE userId1 = ?)"
+        );
+
+        preparedStatement2.setInt(1,id);
+
+        ResultSet resultSet2 = preparedStatement2.executeQuery();
+
+
+        while(resultSet2.next()){
+            friendList.add(new User(resultSet2.getString(1), resultSet2.getString(2)));
+        };
+
+        resultSet2.close();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT name, emailAdress FROM USER_ WHERE id IN(SELECT userId1 FROM FRIENDS WHERE userId2 = ?)"
+        );
+
+        preparedStatement.setInt(1,id);
+
+        ResultSet resultSet1 = preparedStatement.executeQuery();
+
+
+        while(resultSet1.next()){
+            friendList.add(new User(resultSet1.getString(1), resultSet1.getString(2)));
+        };
+
+        resultSet1.close();
+
+        return friendList;
+    }
+
+    public List<User> getFriendsSearched(User user, User friend) throws SQLException {
+        List<User> list = new ArrayList<>();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT name FROM USER_ WHERE name like ? AND id != ? AND id Not IN (SELECT userid1 FROM FRIENDS WHERE userid2 = ?) AND id Not IN (SELECT userid2 FROM FRIENDS WHERE userid1 = ?)"
+        );
+
+        preparedStatement.setString(1,"%" + friend.getUserName() + "%");
+        preparedStatement.setInt(2,user.getId());
+        preparedStatement.setInt(3,user.getId());
+        preparedStatement.setInt(4,user.getId());
+
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()){
+            list.add(new User(resultSet.getString(1)));
+        }
+
+        return list;
+    }
+
+    public void sendFriendRequest(int user, int friend) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO FriendRequest(userId1, userId2) Select ?, ? FROM DUAL Where not exists(select * from FriendRequest where userId1 = ? AND userid2 = ?)"
+        );
+
+        preparedStatement.setInt(1, user);
+        preparedStatement.setInt(3, user);
+
+        preparedStatement.setInt(2, friend);
+        preparedStatement.setInt(4, friend);
+
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 }

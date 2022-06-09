@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -82,12 +83,94 @@ public class Controller {
         return "about";
     }
 
+    @PostMapping("/sendRequest")
+    public String sendRequest(HttpServletRequest request, Model model, @ModelAttribute User friend){
+        HttpSession session = request.getSession();
+        List<User> searchedFriends;
+        List<Group> list;
+        List<User> friendsList;
+
+        try {
+
+
+            User user = (User) session.getAttribute("user");
+            model.addAttribute("userName", user.getUserName());
+
+            friendsList = futModel.getFriendsForUser(futModel.getIdForUser(user));
+            list = futModel.getGroupsForUser(futModel.getIdForUser(user));
+
+            model.addAttribute("groups", list);
+
+            model.addAttribute("friends", friendsList);
+            model.addAttribute("group", new Group());
+            model.addAttribute("friend", new User());
+
+            if (!(friend.getUserName().equals("cancel")))
+            {
+                futModel.sendFriendRequest(futModel.getIdForUser(user), futModel.getIdForUser(friend));
+
+            }
+
+            model.addAttribute("searchedFriends", new ArrayList<User>());
+
+        }catch (Exception e){
+            model.addAttribute("user", new User());
+            model.addAttribute("message1", "");
+            model.addAttribute("message2", "");
+            return "loginPage";
+        }
+
+        return "groups";
+    }
+
+    @PostMapping("/friend")
+    public String searchForFriends(HttpServletRequest request, Model model, @ModelAttribute User friend){
+        HttpSession session = request.getSession();
+        List<User> searchedFriends;
+        List<Group> list;
+        List<User> friendsList;
+
+        try {
+
+
+            User user = (User) session.getAttribute("user");
+            model.addAttribute("userName", user.getUserName());
+
+            friendsList = futModel.getFriendsForUser(futModel.getIdForUser(user));
+            list = futModel.getGroupsForUser(futModel.getIdForUser(user));
+
+            model.addAttribute("groups", list);
+
+            model.addAttribute("friends", friendsList);
+            model.addAttribute("group", new Group());
+            model.addAttribute("friend", new User());
+
+
+            user.setId(futModel.getIdForUser(user));
+
+            searchedFriends = futModel.getFriendsSearched(user, friend);
+
+
+            model.addAttribute("searchedFriends", searchedFriends);
+        }catch (Exception e){
+            model.addAttribute("user", new User());
+            model.addAttribute("message1", "");
+            model.addAttribute("message2", "");
+            return "loginPage";
+        }
+
+        return "groups";
+
+    }
+
     @PostMapping("/groups")
         public String postGroups (HttpServletRequest request, Model model, @ModelAttribute Group group){
             HttpSession session = request.getSession();
             List<Group> list;
+        List<User> friendsList;
 
-            String message;
+
+        String message;
             try {
                 User user = (User) session.getAttribute("user");
                 model.addAttribute("userName", user.getUserName());
@@ -95,16 +178,28 @@ public class Controller {
                 message = futModel.checkForRightGroupName(group.getName());
 
                 model.addAttribute("group", new Group());
+                model.addAttribute("friend", new User());
                 model.addAttribute("message", message);
 
-                int groupId = futModel.createGroup(group, futModel.getIdForUser(user));
+                if (message == ""){
+                    int groupId = futModel.createGroup(group, futModel.getIdForUser(user));
 
-                futModel.addUserToGroup(futModel.getIdForUser(user), groupId);
+                    futModel.addUserToGroup(futModel.getIdForUser(user), groupId);
+                }
 
                 list = futModel.getGroupsForUser(futModel.getIdForUser(user));
                 model.addAttribute("groups", list);
 
+                friendsList = futModel.getFriendsForUser(futModel.getIdForUser(user));
+                model.addAttribute("friends", friendsList);
+
+                model.addAttribute("searchedFriends", new ArrayList<User>());
+
+
             } catch (Exception e) {
+                model.addAttribute("user", new User());
+                model.addAttribute("message1", "");
+                model.addAttribute("message2", "");
                 return "loginPage";
             }
             return "groups";
@@ -114,14 +209,21 @@ public class Controller {
     public String getGroups(HttpServletRequest request, Model model){
         HttpSession session = request.getSession();
         List<Group> list;
+        List<User> friendsList;
+
         try {
             User user = (User) session.getAttribute("user");
             model.addAttribute("userName", user.getUserName());
 
             list = futModel.getGroupsForUser(futModel.getIdForUser(user));
             model.addAttribute("groups", list);
-
             model.addAttribute("group", new Group());
+
+            friendsList = futModel.getFriendsForUser(futModel.getIdForUser(user));
+            model.addAttribute("friends", friendsList);
+            model.addAttribute("friend", new User());
+            model.addAttribute("searchedFriends", new ArrayList<User>());
+
 
             model.addAttribute("message", "");
 
